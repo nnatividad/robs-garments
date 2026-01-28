@@ -1,0 +1,8 @@
+.footer {
+    background: #e1e1e1;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 10px;
+    color: black;
+    padding: 10px;
+}
