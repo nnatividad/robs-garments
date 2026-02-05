@@ -1,9 +1,12 @@
+.landingPage {
+  background: #e1e1e1;
+}
+
 .landingGIF {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px;
-  background: #e1e1e1;
+  padding: 100px;
 }
 
 .landingGIF img {
@@ -13,3 +16,23 @@
   height: 70%;
   object-fit: cover; /* fills screen without stretching */
 }
+
+.newArrivals {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.items {
+  display: flex;
+  list-style-type: none;
+  align-items: stretch;
+  gap: 10px;
+}
+
+.gap {
+  gap: 40px;
+}
+
+
