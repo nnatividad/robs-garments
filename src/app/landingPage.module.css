@@ -24,6 +24,10 @@
   align-items: center;
 }
 
+.newArrivals h1{
+  color: black;
+}
+
 .items {
   display: flex;
   list-style-type: none;

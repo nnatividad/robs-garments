@@ -6,8 +6,8 @@
     padding: 20px;
     margin: 10px;
     text-align: center;
-    height: 330px;
-    max-width: 250px;
+    height: 340px;
+    max-width: 300px;
     display: inline-block;
 }
 
@@ -17,4 +17,12 @@
 
 .cardInfo{
     margin: 10px;
+}
+
+.cardInfo h3{
+    color: black;
+}
+
+.cardInfo p{
+    color: black;
 }

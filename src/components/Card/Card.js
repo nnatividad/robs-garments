@@ -17,9 +17,8 @@ export default function Card({itemName, itemImage, itemPrice}){
                 <h3>
                     {itemName}
                 </h3>
-                <div>
-                    <span></span>
-                    ${itemPrice.toFixed(2)} USD
+                <div className={styles.cardInfo}>
+                    <p>${itemPrice.toFixed(2)} USD </p>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from 'next/link'
 import styles from './landingPage.module.css'
 import NavBar from "@/components/NavBar/NavBar.js"
 import Footer from "@/components/Footer/Footer.js"
@@ -13,7 +13,7 @@ const ITEMS_QUERY = `*[_type=="item"]{
   "imageUrls": images[].asset->url,
   slug
 }`;
-
+  
 export default async function LandingPage () {
     const items = await client.fetch(ITEMS_QUERY, {});
     return (
@@ -31,7 +31,7 @@ export default async function LandingPage () {
                     <h1>New Arrivals</h1>
                     <div className={styles.items}>
                         {items.map((item) => (
-                            <a href={`/${item.category}/${item.slug?.current}`} key={item._id}>
+                            <Link href={`/shop/${item.slug?.current}`} key={item._id}>
                                 <Card 
                                     itemName={item.name}
                                     itemImage={item.imageUrls[0]}
@@ -39,7 +39,7 @@ export default async function LandingPage () {
                                     itemSlug={item.slug}
                                     itemPrice={item.price}
                                 />
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>
