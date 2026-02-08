@@ -1,10 +1,13 @@
-import { use } from 'react'
+import { client } from '@/sanity/client'
 
-export default await function ItemDetails({ params }){
-    const { slug } = use(params);
+export default async function ItemDetails({ params }){
+    const { slug } = await(params);
+    const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]`;
+    const item = await client.fetch(ITEM_QUERY, { slug });
+
     return(
         <main>
-            <h1>{slug}</h1>
+            <h1>{item.name}</h1>
         </main>
     )
 }
