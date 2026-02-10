@@ -22,8 +22,9 @@ export default async function ItemDetails({ params }){
                                         <Image 
                                             src={src}
                                             alt={`${item.name} ${index + 1}`}
-                                            width={600}
-                                            height={600}
+                                            width={500}
+                                            height={500}
+                                            className={styles.itemImage}
                                         />
                                     </li>
                                 ))
@@ -33,25 +34,23 @@ export default async function ItemDetails({ params }){
                     <div className={styles.itemInfo}>
                         <h1>{item.name}</h1>
                         <h3>${item.price.toFixed(2)} USD</h3>
-                        <button>Add to Cart</button>
-                        <button>Purchase</button>
+                        <button type="button" className={styles.button}>Add to Cart</button>
+                        <button type="button" className={styles.button}>Purchase</button>
+
+                        <div className={styles.details}>
+                            Details:
+                            <ul>
+                                <li>Condition: {item.condition}</li>
+                                <li>Color: {item.color}</li>
+                                {item?.description && <li>{item.description}</li>}
+                                <li>{item.size}</li>
+                                {item?.chest && <li>Chest: {item.chest} in.</li>}
+                                {item?.length && <li>Length: {item.length} in.</li>}
+                                {item?.waist && <li>Waist: {item.waist}.</li>}
+                                {item?.inseam && <li>Inseam: {item.inseam} in.</li>}
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <h3>Item Details</h3>
-                    <ul>
-                        <li>{item.condition}</li>
-                        <li>{item.color}</li>
-                        {item?.description && <li>{item.description}</li>}
-                    </ul>
-                    <h3>Measurements</h3>
-                    <ul>
-                        <li>{item.size}</li>
-                        {item?.chest && <li>{item.chest} in.</li>}
-                        {item?.length && <li>{item.length} in.</li>}
-                        {item?.waist && <li>{item.waist} in.</li>}
-                        {item?.inseam && <li>{item.inseam} in.</li>}
-                    </ul>
                 </div>
             </section>
             <footer>
