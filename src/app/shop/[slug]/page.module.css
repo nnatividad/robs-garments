@@ -1,0 +1,20 @@
+.basicInfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+}
+
+.basicInfo ul {
+    list-style: none;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}

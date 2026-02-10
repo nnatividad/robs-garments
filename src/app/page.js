@@ -3,5 +3,9 @@ import styles from "./page.module.css";
 import LandingPage from "@/app/LandingPage"
 
 export default function Home() {
-  return <LandingPage />
+  return (
+    <main className={styles}>
+      <LandingPage />
+    </main>
+    )
 }

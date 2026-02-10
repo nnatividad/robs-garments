@@ -2,6 +2,7 @@ import { client } from '@/sanity/client'
 import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
+import styles from '@/app/shop/[slug]/page.module.css'
 
 export default async function ItemDetails({ params }){
     const { slug } = await(params);
@@ -13,26 +14,28 @@ export default async function ItemDetails({ params }){
                 <NavBar/>
             </header>
             <section>
-                <div>
-                    <ul>
-                        {item.imageUrls.map((src,index) =>(
-                                <li key={index}>
-                                    <Image 
-                                        src={src}
-                                        alt={`${item.name} ${index + 1}`}
-                                        width={300}
-                                        height={300}
-                                    />
-                                </li>
-                            ))
-                        }
-                    </ul>
-                </div>
-                <div>
-                    <h1>{item.name}</h1>
-                    <h3>{item.price}</h3>
-                    <button>Add to Cart</button>
-                    <button>Purchase</button>
+                <div className={styles.basicInfo}>
+                    <div>
+                        <ul>
+                            {item.imageUrls.map((src,index) =>(
+                                    <li key={index}>
+                                        <Image 
+                                            src={src}
+                                            alt={`${item.name} ${index + 1}`}
+                                            width={600}
+                                            height={600}
+                                        />
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+                    <div className={styles.itemInfo}>
+                        <h1>{item.name}</h1>
+                        <h3>${item.price.toFixed(2)} USD</h3>
+                        <button>Add to Cart</button>
+                        <button>Purchase</button>
+                    </div>
                 </div>
                 <div>
                     <h3>Item Details</h3>
