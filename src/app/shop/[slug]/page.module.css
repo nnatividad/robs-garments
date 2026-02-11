@@ -3,8 +3,6 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
-    margin: 10px;
-    padding: 10px;
 }
 
 .itemImage {
@@ -16,6 +14,11 @@
 
 .basicInfo ul {
     list-style: none;
+}
+
+.stickInfo{
+    top: 20px;
+    position: sticky;
 }
 
 .itemInfo {
