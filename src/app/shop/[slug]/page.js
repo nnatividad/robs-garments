@@ -7,6 +7,7 @@ import styles from '@/app/shop/[slug]/page.module.css'
 export default async function ItemDetails({ params }){
     const { slug } = await(params);
     const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]{..., "imageUrls": images[].asset->url}`;
+    
     const item = await client.fetch(ITEM_QUERY, { slug });
     return(
         <main>
@@ -53,6 +54,11 @@ export default async function ItemDetails({ params }){
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+            <section>
+                <div className={styles.moreItems}>
+                    <h1>You may also like </h1>
                 </div>
             </section>
             <footer>

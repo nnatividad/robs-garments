@@ -45,3 +45,9 @@
     border: 1px solid  #e1e1e1;
     color: #e1e1e1;
 }
+
+.moreItems {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+}
