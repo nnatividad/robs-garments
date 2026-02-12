@@ -2,10 +2,10 @@ import { client } from '@/sanity/client'
 import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
-import styles from '@/app/shop/[slug]/page.module.css'
+import styles from '@/app/shop/[category]/[slug]/page.module.css'
 
 export default async function ItemDetails({ params }){
-    const { slug } = await(params);
+    const { category, slug } = await(params);
     const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]{..., "imageUrls": images[].asset->url}`;
     
     const item = await client.fetch(ITEM_QUERY, { slug });

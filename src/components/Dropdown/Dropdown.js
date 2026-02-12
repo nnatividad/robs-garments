@@ -6,7 +6,7 @@ export default function Dropdown(){
         <main>
             <div className={styles.container}>
                 <ul>
-                    <li>All Products</li>
+                    <Link href="/shop"><li>All Products</li></Link>
                     <li>Shirts & Tops</li>
                     <li>Sweatshirts & Hoodies</li>
                     <li>Jackets & Coats</li>
