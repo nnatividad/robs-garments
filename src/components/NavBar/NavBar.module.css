@@ -8,7 +8,7 @@
     margin-bottom: 10px;
 }
 
-.navbar ul {
+.navLink {
     list-style-type: none;
     align-items: stretch;
     display: flex;
@@ -21,3 +21,8 @@
 .navbar li {
     color: black;
 }
+
+.navLink span {
+    cursor: pointer;
+}
+
