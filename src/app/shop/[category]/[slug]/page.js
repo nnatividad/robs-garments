@@ -3,12 +3,24 @@ import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
 import styles from '@/app/shop/[category]/[slug]/page.module.css'
+import Link from 'next/link'
+import Card from '@/components/Card/Card.js'
+
+const ITEMS_QUERY = `*[_type=="item"]{
+    _id,
+    category,
+    price,
+    name,
+    "imageUrls": images[].asset->url,
+    slug
+    }`;
 
 export default async function ItemDetails({ params }){
     const { category, slug } = await(params);
     const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]{..., "imageUrls": images[].asset->url}`;
     
     const item = await client.fetch(ITEM_QUERY, { slug });
+    const moreItems = await client.fetch(ITEMS_QUERY, {});
     return(
         <main>
             <header>
@@ -59,6 +71,19 @@ export default async function ItemDetails({ params }){
             <section>
                 <div className={styles.moreItems}>
                     <h1>You may also like </h1>
+                    <div>
+                        {moreItems.map((item) => (
+                            <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
+                                <Card 
+                                    itemName={item.name}
+                                    itemImage={item.imageUrls[0]}
+                                    itemCategroy={item.category}
+                                    itemSlug={item.slug}
+                                    itemPrice={item.price}
+                                />
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </section>
             <footer>

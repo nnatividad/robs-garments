@@ -5,7 +5,6 @@ import Link from 'next/link'
 import styles from '@/app/shop/page.module.css'
 import { client } from '@/sanity/client'
 
-export default async function AllProducts(){
     const ITEMS_QUERY = `*[_type=="item"]{
     _id,
     category,
@@ -14,6 +13,8 @@ export default async function AllProducts(){
     "imageUrls": images[].asset->url,
     slug
     }`;
+
+export default async function AllProducts(){
     const items = await client.fetch(ITEMS_QUERY, {});
 
     return(
