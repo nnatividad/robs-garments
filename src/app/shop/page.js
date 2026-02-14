@@ -4,10 +4,16 @@ import Card from '@/components/Card/Card.js'
 import Link from 'next/link'
 import { client } from '@/sanity/client'
 
-export default async function Shop({params}){
-    const {category} = await params;
-    const ITEMS_BY_CATEGORY_QUERY = `*[_type == "item" && category == "${category}"]{..., "imageUrls": images[].asset->url}`
-    const items = await client.fetch(ITEMS_BY_CATEGORY_QUERY, {});
+export default async function AllProducts(){
+    const ITEMS_QUERY = `*[_type=="item"]{
+    _id,
+    category,
+    price,
+    name,
+    "imageUrls": images[].asset->url,
+    slug
+    }`;
+    const items = await client.fetch(ITEMS_QUERY, {});
 
     return(
         <main>
@@ -16,7 +22,7 @@ export default async function Shop({params}){
             </header>
             <section>
                 <div>
-                    {items.length > 0 ? items.map((item) => (
+                    {items.map((item) => (
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                             <Card
                                 itemName={item.name}
@@ -26,8 +32,7 @@ export default async function Shop({params}){
                                 itemPrice={item.price}
                             />
                         </Link>
-                    )) :
-                        `No available products in this category`
+                    ))
                     }
                 </div>
             </section>
