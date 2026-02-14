@@ -2,6 +2,7 @@ import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
 import Card from '@/components/Card/Card.js'
 import Link from 'next/link'
+import styles from '@/app/shop/page.module.css'
 import { client } from '@/sanity/client'
 
 export default async function AllProducts(){
@@ -21,7 +22,7 @@ export default async function AllProducts(){
                 <NavBar/>
             </header>
             <section>
-                <div>
+                <div className={styles.items}>
                     {items.map((item) => (
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                             <Card
