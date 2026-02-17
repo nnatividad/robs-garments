@@ -5,6 +5,7 @@ import Image from 'next/image'
 import styles from '@/app/shop/[category]/[slug]/page.module.css'
 import Link from 'next/link'
 import Card from '@/components/Card/Card.js'
+import AddToCartButton from '@/components/Buttons/AddToCartButton'
 
 const ITEMS_QUERY = `*[_type=="item"]{
     _id,
@@ -16,11 +17,12 @@ const ITEMS_QUERY = `*[_type=="item"]{
     }`;
 
 export default async function ItemDetails({ params }){
-    const { category, slug } = await(params);
+    const { slug } = await(params)
     const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]{..., "imageUrls": images[].asset->url}`;
-    
+
     const item = await client.fetch(ITEM_QUERY, { slug });
     const moreItems = await client.fetch(ITEMS_QUERY, {});
+
     return(
         <main>
             <header>
@@ -48,7 +50,7 @@ export default async function ItemDetails({ params }){
                         <div className={styles.itemInfo}>
                             <h1>{item.name}</h1>
                             <h3>${item.price.toFixed(2)} USD</h3>
-                            <button type="button" className={styles.button}>Add to Cart</button>
+                            <AddToCartButton itemID={item._id}/>
                             <button type="button" className={styles.button}>Purchase</button>
 
                             <div className={styles.details}>

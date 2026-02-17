@@ -30,22 +30,6 @@
     width: 400px;
 }
 
-.button {
-    border: 1px solid;
-    border-radius: 10px;
-    width: 100%;
-    height: 50px;
-    background-color: #e1e1e1;
-    font-size: 15px;
-    transition-duration: 0.4s;
-}
-
-.button:hover {
-    background-color: black;
-    border: 1px solid  #e1e1e1;
-    color: #e1e1e1;
-}
-
 .moreItems {
     margin: 30px;
     display: flex;
