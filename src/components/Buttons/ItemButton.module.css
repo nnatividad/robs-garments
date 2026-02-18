@@ -1,4 +1,15 @@
-.button {
+.removeButton {
+    border: 1px solid;
+    border-radius: 10px;
+    width: 21%;
+    height: 50px;
+    background-color: #e1e1e1;
+    font-size: 15px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.addButton {
     border: 1px solid;
     border-radius: 10px;
     width: 100%;
@@ -9,7 +20,7 @@
     cursor: pointer;
 }
 
-.button:hover {
+button:hover {
     background-color: black;
     border: 1px solid  #e1e1e1;
     color: #e1e1e1;

@@ -3,6 +3,7 @@
 import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
+import RemoveItemButton from '@/components/Buttons/RemoveItemButton'
 import { useCart } from '../../app/context/CartContext'
 import { client } from '@/sanity/client'
 import { useState, useEffect } from 'react'
@@ -29,6 +30,7 @@ export default function Cart(){
         }
 
         fetchItems()
+        console.log(cartData);
     }, [cartData.cart]);
 
     return(
@@ -39,7 +41,7 @@ export default function Cart(){
             <section>
                 <div>
                     <ul>
-                        {localCart.length  > 0 ? localCart.map((item) => (
+                        {localCart.map((item) => (
                             <li key={item._id}>
                                 <div>
                                     <p>{item.name}</p>
@@ -51,10 +53,9 @@ export default function Cart(){
                                     height = {300}
                                     />
                                 </div>
+                                <RemoveItemButton itemID={item._id}/>
                             </li>
-                        )) :
-                            `No Items in Cart`
-                        }
+                        ))}
                     </ul>
                 </div>
             </section>

@@ -36,7 +36,14 @@ export default function CartProvider ( {children} ){
         // removes item from cart
         // removes by id in array
         // called in Cart Page, when user clicks "remove item" button
-    }
+        setCart(prevCart => {
+            let newCart = prevCart.filter(id => id !== itemId);
+            return newCart;
+        });
+
+        alert("Item removed from cart!")
+    };
+
     return (
         <CartContext.Provider value={{ cart, setCart }}>
             <CartUpdateContext.Provider value={{ addItem, removeItem }}>

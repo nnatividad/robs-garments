@@ -1,5 +1,5 @@
 'use client'
-import styles from './AddToCartButton.module.css'
+import styles from './ItemButton.module.css'
 import { useCartUpdate } from '@/app/context/CartContext'
 
 export default function AddToCart( {itemID} ){
@@ -7,9 +7,9 @@ export default function AddToCart( {itemID} ){
     return(
         <button
             type="button"
-            className={styles.button}
+            className={styles.addButton}
             onClick={() => {
-                addToCart.addItem(itemID)
+                addToCart.addItem(itemID);
                 alert("Item added to Cart");
             }}
         >
