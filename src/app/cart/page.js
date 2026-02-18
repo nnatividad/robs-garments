@@ -12,26 +12,36 @@ import styles from './page.module.css'
 // cart stores itemIDs
 // fetch itemDetails: name, image, price using GROQ Query
 const CART_QUERY = `*[_type=="item" && _id in $ids]{_id, name, price, "imageUrls": images[].asset->url}`;
+const PRICE_QUERY = `*[_type=="item" && _id in $ids]{price}`;
 
 export default function Cart(){
     const cartData = useCart(); // global cart context
     const [localCart, setLocalCart] = useState([]); // local cart storing item data
-    const [estimatedTotal, setEstimatedTotal] = useState(0);
+    const [estimatedTotal, setEstimatedTotal] = useState(0); // cart total state
     
     useEffect(() => {
 
         if (cartData.cart.length == 0){
             setLocalCart([]);
+            setEstimatedTotal(0);
             return;
         }
         
         // query cart items by id whenever the cart array is updated
         async function fetchItems(){
-            const cartItems = await client.fetch(CART_QUERY, {ids: cartData.cart});
+            const cartItems = await client.fetch(CART_QUERY, {ids: cartData.cart}); // fetching cartItems
+
+            // calculating cart total whenever cart changes
+            let total = 0;
+            for(let i = 0; i < cartItems.length; i++){
+                total += cartItems[i].price;
+            }
+
+            setEstimatedTotal(total);
             setLocalCart(cartItems);
         }
 
-        fetchItems()
+        fetchItems();
     }, [cartData.cart]);
 
     return(
@@ -67,7 +77,7 @@ export default function Cart(){
                         )}
                     </ul>
                     <div className={styles.container}>
-                        Estimated Total: $
+                        Estimated Total: ${estimatedTotal.toFixed(2)}
                     </div>
                 </div>
             </section>
