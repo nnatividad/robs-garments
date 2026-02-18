@@ -1,7 +1,20 @@
 .container {
-    diplay: flex;
-    flex-direction: row;
+    display: flex;
+    flex-direction: column;
     margin: 10px;
+}
+
+.container ul {
+    list-style-type: none;
+}
+
+.checkoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-left: auto;
+    margin-top: 30px;
 }
 
 .cartItem {

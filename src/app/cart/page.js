@@ -8,11 +8,11 @@ import { useCart } from '../../app/context/CartContext'
 import { client } from '@/sanity/client'
 import { useState, useEffect } from 'react'
 import styles from './page.module.css'
+import Checkout from '@/components/Buttons/CheckoutButton'
 
 // cart stores itemIDs
 // fetch itemDetails: name, image, price using GROQ Query
 const CART_QUERY = `*[_type=="item" && _id in $ids]{_id, name, price, "imageUrls": images[].asset->url}`;
-const PRICE_QUERY = `*[_type=="item" && _id in $ids]{price}`;
 
 export default function Cart(){
     const cartData = useCart(); // global cart context
@@ -76,9 +76,10 @@ export default function Cart(){
                             `Cart empty`
                         )}
                     </ul>
-                    <div className={styles.container}>
-                        Estimated Total: ${estimatedTotal.toFixed(2)}
-                    </div>
+                </div>
+                <div className={styles.checkoutContainer}>
+                    Estimated Total: ${estimatedTotal.toFixed(2)}
+                    <Checkout />
                 </div>
             </section>
             <footer>
