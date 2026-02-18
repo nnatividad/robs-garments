@@ -1,0 +1,39 @@
+.container {
+    diplay: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
+.cartItem {
+    border: 1px solid black;
+    border-radius: 10px;
+    border-color: hsl(0,0%,80%);
+    box-shadow: 5px 5px 5px hsl(0,0%,0%,0.1);
+    display: flex;
+    justify-content: flex-start;
+    width: 95%;
+    margin: 10px;
+    padding: 10px;
+}
+
+.itemImage {
+    border: 1px solid;
+    border-radius: 10px;
+    border-color: hsl(0,0%,80%);
+    box-shadow: 5px 5px 5px hsl(0,0%,0%,0.1);
+}
+
+.itemDetail {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+
+}
+
+.detailsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-left: 50px;
+}

@@ -7,6 +7,7 @@ import RemoveItemButton from '@/components/Buttons/RemoveItemButton'
 import { useCart } from '../../app/context/CartContext'
 import { client } from '@/sanity/client'
 import { useState, useEffect } from 'react'
+import styles from './page.module.css'
 
 // cart stores itemIDs
 // fetch itemDetails: name, image, price using GROQ Query
@@ -15,6 +16,7 @@ const CART_QUERY = `*[_type=="item" && _id in $ids]{_id, name, price, "imageUrls
 export default function Cart(){
     const cartData = useCart(); // global cart context
     const [localCart, setLocalCart] = useState([]); // local cart storing item data
+    const [estimatedTotal, setEstimatedTotal] = useState(0);
     
     useEffect(() => {
 
@@ -30,7 +32,6 @@ export default function Cart(){
         }
 
         fetchItems()
-        console.log(cartData);
     }, [cartData.cart]);
 
     return(
@@ -39,24 +40,35 @@ export default function Cart(){
                 <NavBar/>
             </header>
             <section>
-                <div>
+                <div className={styles.container}>
+                    <h1>Your Cart</h1>
                     <ul>
-                        {localCart.map((item) => (
+                        {cartData.cart.length > 0 ? localCart.map((item) => (
                             <li key={item._id}>
-                                <div>
-                                    <p>{item.name}</p>
-                                    <p>{item.price}</p>
+                                <div className={styles.cartItem}>
                                     <Image
-                                    src={item.imageUrls[0]}
-                                    alt={`${item.name}`}
-                                    width = {300}
-                                    height = {300}
+                                        src={item.imageUrls[0]}
+                                        alt={`${item.name}`}
+                                        width = {200}
+                                        height = {200}
+                                        className={styles.itemImage}
                                     />
+                                    <div className={styles.detailsContainer}>
+                                        <div className={styles.itemDetail}>
+                                            <p>{item.name}</p>
+                                            <p>${item.price.toFixed(2)}</p>
+                                        </div>
+                                        <RemoveItemButton itemID={item._id}/>                                        
+                                    </div>
                                 </div>
-                                <RemoveItemButton itemID={item._id}/>
                             </li>
-                        ))}
+                        )): (
+                            `Cart empty`
+                        )}
                     </ul>
+                    <div className={styles.container}>
+                        Estimated Total: $
+                    </div>
                 </div>
             </section>
             <footer>
