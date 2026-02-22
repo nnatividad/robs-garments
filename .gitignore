@@ -11,7 +11,7 @@
 !.yarn/versions
 
 # sanity
-client.js
+/sanity
 
 # testing
 /coverage
