@@ -3,7 +3,7 @@ import styles from './landingPage.module.css'
 import NavBar from "@/components/NavBar/NavBar.js"
 import Footer from "@/components/Footer/Footer.js"
 import Card from '@/components/Card/Card.js'
-import { client } from '@/sanity/client'
+import { client } from '../../sanity/client'
 
 const ITEMS_QUERY = `*[_type=="item"]{
   _id,

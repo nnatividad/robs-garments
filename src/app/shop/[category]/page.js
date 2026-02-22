@@ -3,7 +3,7 @@ import Footer from '@/components/Footer/Footer'
 import Card from '@/components/Card/Card.js'
 import Link from 'next/link'
 import styles from '@/app/shop/page.module.css'
-import { client } from '@/sanity/client'
+import { client } from '../../../../sanity/client'
 
 export default async function Shop({params}){
     const {category} = await params;

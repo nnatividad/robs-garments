@@ -3,7 +3,7 @@ import Footer from '@/components/Footer/Footer'
 import Card from '@/components/Card/Card.js'
 import Link from 'next/link'
 import styles from '@/app/shop/page.module.css'
-import { client } from '@/sanity/client'
+import { client } from '../../../sanity/client'
 
     const ITEMS_QUERY = `*[_type=="item"]{
     _id,

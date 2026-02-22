@@ -1,4 +1,4 @@
-import { client } from '@/sanity/client'
+import { client } from '../../../../../sanity/client'
 import NavBar from '@/components/NavBar/NavBar'
 import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
