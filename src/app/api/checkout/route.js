@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
-import { headers } from 'next/headers'
 
-export async function GET(){
-    return new NextResponse("Checkout page");
+export async function POST(req){
+    const body = await req.json();
+    const cart = body;
+    console.log(body);
+    return NextResponse.json(cart);
 }

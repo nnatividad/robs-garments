@@ -1,13 +1,24 @@
 'use client'
 import styles from './ItemButton.module.css'
-import { useCartUpdate } from '@/app/context/CartContext'
 
-export default function CheckoutButton (){
+export default function CheckoutButton ( {cart} ){
+    // async function for making call to /api/checkout:
+    const handleCart = async () => {
+        const res = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cart)
+        });
+
+        const data = await res.json();
+        console.log(data);
+    }
+
     return(
-        <form action="/api/checkout" method="GET">
-            <button type="submit" className={styles.checkoutButton}>
-                Checkout
-            </button>
-        </form>
+        <button type="submit" className={styles.checkoutButton} onClick={handleCart}>
+            Checkout
+        </button>
     )
 }

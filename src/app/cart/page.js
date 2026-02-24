@@ -79,7 +79,7 @@ export default function Cart(){
                 </div>
                 <div className={styles.checkoutContainer}>
                     Estimated Total: ${estimatedTotal.toFixed(2)}
-                    <CheckoutButton />
+                    <CheckoutButton cart={ cartData.cart }/>
                 </div>
             </section>
             <footer>
