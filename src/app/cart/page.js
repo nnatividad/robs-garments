@@ -8,7 +8,7 @@ import { useCart } from '../../app/context/CartContext'
 import { client } from '../../../sanity/client'
 import { useState, useEffect } from 'react'
 import styles from './page.module.css'
-import Checkout from '@/components/Buttons/CheckoutButton'
+import CheckoutButton from '@/components/Buttons/CheckoutButton'
 
 // cart stores itemIDs
 // fetch itemDetails: name, image, price using GROQ Query
@@ -79,7 +79,7 @@ export default function Cart(){
                 </div>
                 <div className={styles.checkoutContainer}>
                     Estimated Total: ${estimatedTotal.toFixed(2)}
-                    <Checkout />
+                    <CheckoutButton />
                 </div>
             </section>
             <footer>

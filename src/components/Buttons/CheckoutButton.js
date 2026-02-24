@@ -2,15 +2,12 @@
 import styles from './ItemButton.module.css'
 import { useCartUpdate } from '@/app/context/CartContext'
 
-export default function Checkout (){
+export default function CheckoutButton (){
     return(
-        <button
-            type="button"
-            className={styles.checkoutButton}
-            onClick={() => {
-            }}
-        >
-            Checkout
-        </button>
+        <form action="/api/checkout" method="GET">
+            <button type="submit" className={styles.checkoutButton}>
+                Checkout
+            </button>
+        </form>
     )
 }
