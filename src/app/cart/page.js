@@ -9,6 +9,7 @@ import { client } from '../../../sanity/client'
 import { useState, useEffect } from 'react'
 import styles from './page.module.css'
 import CheckoutButton from '@/components/Buttons/CheckoutButton'
+import Checkout from '@/components/Checkout/Checkout'
 
 // cart stores itemIDs
 // fetch itemDetails: name, image, price using GROQ Query
@@ -18,6 +19,7 @@ export default function Cart(){
     const cartData = useCart(); // global cart context
     const [localCart, setLocalCart] = useState([]); // local cart storing item data
     const [estimatedTotal, setEstimatedTotal] = useState(0); // cart total state
+    const [clientSecret, setClientSecret] = useState(null); // stores client secret in state used for rendering embedded checkout
     
     useEffect(() => {
 
@@ -44,12 +46,29 @@ export default function Cart(){
         fetchItems();
     }, [cartData.cart]);
 
+    // async function for making call to /api/checkout:
+    const handleCart = async (e) => {
+        e.preventDefault();
+        const res = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cartData.cart)
+        });
+
+        const { clientSecret } = await res.json();
+        setClientSecret(clientSecret);
+    }
+
     return(
         <main>
             <header>
                 <NavBar/>
             </header>
             <section>
+            {!clientSecret ? (
+                <>
                 <div className={styles.container}>
                     <h1>Your Cart</h1>
                     <ul>
@@ -79,8 +98,12 @@ export default function Cart(){
                 </div>
                 <div className={styles.checkoutContainer}>
                     Estimated Total: ${estimatedTotal.toFixed(2)}
-                    <CheckoutButton cart={ cartData.cart }/>
+                    <CheckoutButton onClick={handleCart}/>
                 </div>
+                </>
+            ) : (
+                <Checkout clientSecret={clientSecret} />
+            )}
             </section>
             <footer>
                 <Footer/>

@@ -43,5 +43,5 @@ export async function POST(req){
     })
     
     // returning client_secret which is used to access data of checkout session (name, price, etc.) in frontend
-    return NextResponse.json(session.client_secret);
+    return NextResponse.json({clientSecret: session.client_secret});
 }
