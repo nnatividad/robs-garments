@@ -38,6 +38,55 @@ export async function POST(req){
         ui_mode: 'embedded',
         payment_method_types: ['card'],
         line_items: lineItems,
+       // automatic_tax: {
+       //     enabled: true
+       // },
+        billing_address_collection: 'required',
+        shipping_address_collection: {
+            allowed_countries: ['US']
+        },
+        shipping_options: [
+            {
+                shipping_rate_data: {
+                    type: 'fixed_amount',
+                    fixed_amount: {
+                        amount: 500,
+                        currency: 'usd'
+                    },
+                    display_name: 'Standard',
+                    delivery_estimate: {
+                        minimum: {
+                            unit: 'business_day',
+                            value: 4
+                        },
+                        maximum: {
+                            unit: 'business_day',
+                            value: 7
+                        }
+                    }
+                }
+            },
+            {
+                shipping_rate_data: {
+                    type: 'fixed_amount',
+                    fixed_amount: {
+                        amount: 1500,
+                        currency: 'usd'
+                    },
+                    display_name: 'Expedited',
+                    delivery_estimate: {
+                        minimum: {
+                            unit: 'business_day',
+                            value: 2
+                        },
+                        maximum: {
+                            unit: 'business_day',
+                            value: 3
+                        }
+                    }
+                }   
+            }
+        ],
         mode: 'payment',
         return_url: `${origin}/return?session_id={CHECKOUT_SESSION_ID}`,
     })
