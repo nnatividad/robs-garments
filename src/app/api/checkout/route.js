@@ -88,7 +88,7 @@ export async function POST(req){
             }
         ],
         mode: 'payment',
-        return_url: `${origin}/return?session_id={CHECKOUT_SESSION_ID}`,
+        return_url: `${origin}/return/{CHECKOUT_SESSION_ID}`,
     })
     
     // returning client_secret which is used to access data of checkout session (name, price, etc.) in frontend
