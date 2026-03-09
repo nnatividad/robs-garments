@@ -27,7 +27,10 @@ export async function POST(req){
             unit_amount: item.price,
             product_data: {
                 name: item.name,
-                images: [item.imageUrls[0]]
+                images: [item.imageUrls[0]],
+                metadata: {
+                    sanityId: item._id
+                }
             },
         },
         quantity: 1,
