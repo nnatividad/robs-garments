@@ -51,6 +51,7 @@ export async function POST(req){
                 const created = session.created;
                 const date = new Date(created * 1000);
 
+
                 // extract address details
                 const shippingAddress = {
                     city: session.customer_details.address.city,
@@ -75,12 +76,15 @@ export async function POST(req){
 
                 await client.create(newOrder);
 
+                // soldAt time
+                const soldTime = new Date().toISOString()
+
                 // update inventory
                 for(let i = 0; i < ids.length; i++){
                     await client
                         .patch(ids[i])
                         .set({ isSold: true })
-                        .set({ soldAt: new Date().toISOString() })
+                        .set({ soldAt: soldTime })
                         .commit()
                         .then((updatedDoc) => {
                             console.log('Updated doc: ', updatedDoc)
