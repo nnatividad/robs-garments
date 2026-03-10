@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Card from '@/components/Card/Card.js'
 import AddToCartButton from '@/components/Buttons/AddToCartButton'
 
-const ITEMS_QUERY = `*[_type=="item"]{
+const ITEMS_QUERY = `*[_type=="item" && isSold == false]{
     _id,
     category,
     price,

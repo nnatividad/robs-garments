@@ -5,7 +5,7 @@ import Link from 'next/link'
 import styles from '@/app/shop/page.module.css'
 import { client } from '../../../sanity/client'
 
-    const ITEMS_QUERY = `*[_type=="item"]{
+    const ITEMS_QUERY = `*[_type=="item" && isSold == false]{
     _id,
     category,
     price,

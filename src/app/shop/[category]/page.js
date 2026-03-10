@@ -7,7 +7,7 @@ import { client } from '../../../../sanity/client'
 
 export default async function Shop({params}){
     const {category} = await params;
-    const ITEMS_BY_CATEGORY_QUERY = `*[_type == "item" && category == "${category}"]{..., "imageUrls": images[].asset->url}`
+    const ITEMS_BY_CATEGORY_QUERY = `*[_type == "item" && category == "${category}" && isSold == false]{..., "imageUrls": images[].asset->url}`
     const items = await client.fetch(ITEMS_BY_CATEGORY_QUERY, {});
 
     return(

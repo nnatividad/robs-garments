@@ -5,7 +5,7 @@ import Footer from "@/components/Footer/Footer.js"
 import Card from '@/components/Card/Card.js'
 import { client } from '../../sanity/client'
 
-const ITEMS_QUERY = `*[_type=="item"]{
+const ITEMS_QUERY = `*[_type=="item" && isSold == false]{
   _id,
   category,
   price,
