@@ -18,7 +18,6 @@ export async function POST(req){
         )
 
         const session = event.data.object;
-
         // check for if event type is checkout.session.completed
         // do nothing if event type is something else
         if (event.type == "checkout.session.completed"){
@@ -36,16 +35,22 @@ export async function POST(req){
                 // extract line items
                 const lineItems = await stripe.checkout.sessions.listLineItems(sessionId, {expand:['data.price.product']});
 
-                console.log(lineItems.data);
-
                 // query line item details from sanity
                 const ids = lineItems.data.map(item => item.price.product.metadata.sanityId);
                 console.log(ids);
+
+                // need product data to update isSold
                 const lineItemDetails = await client.fetch(LINE_ITEMS_QUERY, {ids: ids});
-                console.log(lineItemDetails);
+                
+                // map ids to objects and have unique key of id + index
+                const itemRef = ids.map((id, index) => ({
+                        _key: id + index,
+                        _ref: id,
+                        _type: 'reference'
+                }));
 
                 // update inventory
-               /* for(let i = 0; i < lineItemDetails.length; i++){
+                /*for(let i = 0; i < lineItemDetails.length; i++){
                     await client
                         .patch(lineItemDetails[i]._id)
                         .set({ isSold: true })
@@ -80,7 +85,8 @@ export async function POST(req){
                     email: session.customer_details.email,
                     createdAt: date.toISOString(),
                     address: shippingAddress,
-                    orderTotal: session.amount_total
+                    orderTotal: session.amount_total,
+                    itemsPurchased: itemRef
                 };
 
                 await client.create(newOrder);
