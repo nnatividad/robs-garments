@@ -3,7 +3,6 @@ import { client } from '../../../../sanity/client'
 import { stripe } from '../../../../lib/stripe'
 
 const CHECK_ORDERS_QUERY = `*[_type=="order" && _id == $sessionId][0]`;
-const LINE_ITEMS_QUERY = `*[_type=="item" && _id in $ids]`;
 
 export async function POST(req){
     const body = await req.text(); // reads raw HTTP request body and returns as a string. stripe sends checkout session object data
@@ -37,10 +36,9 @@ export async function POST(req){
 
                 // query line item details from sanity
                 const ids = lineItems.data.map(item => item.price.product.metadata.sanityId);
-                console.log(ids);
 
                 // need product data to update isSold
-                const lineItemDetails = await client.fetch(LINE_ITEMS_QUERY, {ids: ids});
+               // const lineItemDetails = await client.fetch(LINE_ITEMS_QUERY, {ids: ids});
                 
                 // map ids to objects and have unique key of id + index
                 const itemRef = ids.map((id, index) => ({
@@ -48,20 +46,6 @@ export async function POST(req){
                         _ref: id,
                         _type: 'reference'
                 }));
-
-                // update inventory
-                /*for(let i = 0; i < lineItemDetails.length; i++){
-                    await client
-                        .patch(lineItemDetails[i]._id)
-                        .set({ isSold: true })
-                        .commit()
-                        .then((updatedDoc) => {
-                            console.log('Updated doc: ', updatedDoc)
-                        })
-                        .catch((err) => {
-                            console.error('Update failed: ', err.message)
-                        })
-                }*/
 
                 // convert created from Unix to seconds
                 const created = session.created;
@@ -90,6 +74,22 @@ export async function POST(req){
                 };
 
                 await client.create(newOrder);
+
+                // update inventory
+                for(let i = 0; i < ids.length; i++){
+                    await client
+                        .patch(ids[i])
+                        .set({ isSold: true })
+                        .set({ soldAt: new Date().toISOString() })
+                        .commit()
+                        .then((updatedDoc) => {
+                            console.log('Updated doc: ', updatedDoc)
+                        })
+                        .catch((err) => {
+                            console.error('Update failed: ', err.message)
+                        })
+                }
+
                 return NextResponse.json( {message: 'Order created' });
             }
         }
