@@ -21,11 +21,11 @@ export default async function LandingPage () {
             <header>
                 <NavBar />
             </header>
-            <a href='#'>
-                <div className={styles.landingGIF}>
-                <img src="/robin-garments.gif" alt="loading..." />
-                </div>
-            </a>
+            <div className={styles.landingGIF}>
+                <Link href='/shop' className={styles.gifLink}>
+                    <img src="/robin-garments.gif" alt="loading..." />
+                </Link>
+            </div>
             <section>
                 <div className={styles.newArrivals}>
                     <h1>New Arrivals</h1>
