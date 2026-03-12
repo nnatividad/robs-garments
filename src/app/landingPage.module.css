@@ -13,7 +13,7 @@
   border-style: solid;
   border-color: black;
   width: 70%;
-  height: 70%;
+  max-width: 900px;
   object-fit: cover; /* fills screen without stretching */
 }
 
@@ -29,10 +29,12 @@
 }
 
 .items {
-  display: flex;
-  list-style-type: none;
-  align-items: stretch;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 60%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .gap {
