@@ -62,10 +62,7 @@ export default function Cart(){
     }
 
     return(
-        <main>
-            <header>
-                <NavBar/>
-            </header>
+        <main className={styles.pageFormat}>
             <section>
             {!clientSecret ? (
                 <>
@@ -105,9 +102,6 @@ export default function Cart(){
                 <Checkout clientSecret={clientSecret} />
             )}
             </section>
-            <footer>
-                <Footer/>
-            </footer>
         </main>
     );
 }

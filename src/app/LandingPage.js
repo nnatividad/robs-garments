@@ -18,9 +18,6 @@ export default async function LandingPage () {
     const items = await client.fetch(ITEMS_QUERY, {});
     return (
         <main className={styles.landingPage}>
-            <header>
-                <NavBar />
-            </header>
             <div className={styles.landingGIF}>
                 <Link href='/shop' className={styles.gifLink}>
                     <img src="/robin-garments.gif" alt="loading..." />
@@ -44,9 +41,6 @@ export default async function LandingPage () {
                     </div>
                 </div>
             </section>
-            <footer>
-                <Footer />
-            </footer>
         </main>
     );
 }

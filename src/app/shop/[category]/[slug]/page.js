@@ -1,6 +1,4 @@
 import { client } from '../../../../../sanity/client'
-import NavBar from '@/components/NavBar/NavBar'
-import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
 import styles from '@/app/shop/[category]/[slug]/page.module.css'
 import Link from 'next/link'
@@ -25,9 +23,6 @@ export default async function ItemDetails({ params }){
 
     return(
         <main>
-            <header>
-                <NavBar/>
-            </header>
             <section>
                 <div className={styles.basicInfo}>
                     <div className={styles.images}>
@@ -88,9 +83,6 @@ export default async function ItemDetails({ params }){
                     </div>
                 </div>
             </section>
-            <footer>
-                <Footer/>
-            </footer>
         </main>
     )
 }

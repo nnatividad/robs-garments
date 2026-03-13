@@ -1,3 +1,12 @@
+.pageFormat {
+  display: flex;
+  flex-direction: column;
+}
+
+.pageFormat section {
+  flex: 1;
+}
+
 .container {
     display: flex;
     flex-direction: column;

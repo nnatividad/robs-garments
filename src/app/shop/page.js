@@ -18,10 +18,7 @@ export default async function AllProducts(){
     const items = await client.fetch(ITEMS_QUERY, {});
 
     return(
-        <main>
-            <header>
-                <NavBar/>
-            </header>
+        <main className={styles.pageFormat}>
             <section>
                 <div className={styles.items}>
                     {items.map((item) => (
@@ -38,9 +35,6 @@ export default async function AllProducts(){
                     }
                 </div>
             </section>
-            <footer>
-                <Footer/>
-            </footer>
         </main>
     );
 }

@@ -11,11 +11,8 @@ export default async function Shop({params}){
     const items = await client.fetch(ITEMS_BY_CATEGORY_QUERY, {});
 
     return(
-        <main>
-            <header>
-                <NavBar/>
-            </header>
-            <section>
+        <main className={styles.pageFormat}>
+            <div className={styles.pageContent}>
                 <div className={styles.items}>
                     {items.length > 0 ? items.map((item) => (
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
@@ -31,10 +28,7 @@ export default async function Shop({params}){
                         `No available products in this category`
                     }
                 </div>
-            </section>
-            <footer>
-                <Footer/>
-            </footer>
+            </div>
         </main>
     );
 }
