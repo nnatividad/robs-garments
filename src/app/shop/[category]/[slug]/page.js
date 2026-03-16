@@ -43,18 +43,16 @@ export default async function ItemDetails({ params }){
                     </div>
                     <div className={styles.stickInfo}>
                         <div className={styles.itemInfo}>
-                            <h1>{item.name}</h1>
+                            <h2>{item.name}</h2>
                             <h3>${item.price.toFixed(2)} USD</h3>
                             <AddToCartButton itemID={item._id}/>
-                            <button type="button" className={styles.button}>Purchase</button>
 
                             <div className={styles.details}>
-                                Details:
                                 <ul>
                                     <li>Condition: {item.condition}</li>
                                     <li>Color: {item.color}</li>
                                     {item?.description && <li>{item.description}</li>}
-                                    <li>{item.size}</li>
+                                    <li>Size: {item.size}</li>
                                     {item?.chest && <li>Chest: {item.chest} in.</li>}
                                     {item?.length && <li>Length: {item.length} in.</li>}
                                     {item?.waist && <li>Waist: {item.waist}.</li>}

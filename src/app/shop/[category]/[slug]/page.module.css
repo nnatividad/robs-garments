@@ -1,7 +1,7 @@
 .basicInfo {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: flex-start;
 }
 
@@ -27,11 +27,24 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    width: 400px;
+    max-width: 500px;
 }
 
 .moreItems {
     margin: 30px;
     display: flex;
     flex-direction: column;
+}
+
+@media (max-width: 768px) {
+    .basicInfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+
+    .itemInfo {
+        margin: 20px;
+    }
 }
