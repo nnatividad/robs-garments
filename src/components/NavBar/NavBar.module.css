@@ -35,6 +35,7 @@
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
+    width: 100%;
     gap: 10px;
   }
 

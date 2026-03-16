@@ -23,7 +23,7 @@ export default async function ItemDetails({ params }){
 
     return(
         <main>
-            <section>
+            <section className={styles.spaceBetween}>
                 <div className={styles.basicInfo}>
                     <div className={styles.images}>
                         <ul>
@@ -63,11 +63,11 @@ export default async function ItemDetails({ params }){
                     </div>
                 </div>
             </section>
-            <section>
+            <section className={styles.spaceBetween}>
                 <div className={styles.moreItems}>
                     <h1>You may also like </h1>
-                    <div>
-                        {moreItems.map((item) => (
+                    <div className={styles.items}>
+                        {moreItems.slice(0, 4).map((item) => (
                             <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                                 <Card 
                                     itemName={item.name}

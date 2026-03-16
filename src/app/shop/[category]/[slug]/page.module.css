@@ -1,3 +1,7 @@
+.spaceBetween {
+    margin-bottom: 40px;
+}
+
 .basicInfo {
     display: flex;
     flex-direction: row;
@@ -5,15 +9,26 @@
     align-items: flex-start;
 }
 
+.images {
+    width: 100%;
+    max-width: 500px;
+}
+
 .itemImage {
     border: 1px solid;
     border-radius: 10px;
     border-color: hsl(0,0%,80%);
     box-shadow: 5px 5px 5px hsl(0,0%,0%,0.1);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
 }
 
 .basicInfo ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .stickInfo{
@@ -31,20 +46,44 @@
 }
 
 .moreItems {
-    margin: 30px;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
     .basicInfo {
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
     }
 
     .itemInfo {
         margin: 20px;
+    }
+
+    .moreItems {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        justify-items: center;
     }
 }
