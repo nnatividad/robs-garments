@@ -1,7 +1,5 @@
 'use client'
 
-import NavBar from '@/components/NavBar/NavBar'
-import Footer from '@/components/Footer/Footer'
 import Image from 'next/image'
 import RemoveItemButton from '@/components/Buttons/RemoveItemButton'
 import { useCart } from '../../app/context/CartContext'
