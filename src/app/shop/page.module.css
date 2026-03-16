@@ -9,9 +9,18 @@
 
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  width: 60%;
-  max-width: 1200px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 2fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+@media (max-width: 768px){
+    .items {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        justify-items: center;
+    }
 }
