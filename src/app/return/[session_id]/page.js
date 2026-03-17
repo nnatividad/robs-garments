@@ -1,4 +1,5 @@
-import { stripe } from '../../../../lib/stripe'
+import { stripe } from '../../../../lib/stripe';
+import Success from '@/components/Success/Success'
 
 export default async function Return({params}){
     const {session_id} = await(params);
@@ -9,8 +10,6 @@ export default async function Return({params}){
     }
 
     if (session?.status == 'complete'){
-        return <h3>
-            We appreciate your business!
-        </h3>;
+        return <Success/>
     }
 }

@@ -1,5 +1,5 @@
 'use client'
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState, useContext, useEffect } from 'react'
 
 const CartContext = createContext();
 
@@ -43,6 +43,31 @@ export default function CartProvider ( {children} ){
 
         alert("Item removed from cart!")
     };
+
+    // functions loadCart, saveCart for local storage
+    function loadCart() {
+        // loads item ids from local storage
+        const storedCart = JSON.parse(localStorage.getItem('cart'));
+        return storedCart;
+    }
+
+    function saveCart() {
+        // saves current item ids to local storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+
+    // useEffect hook for load cart (on mount)
+    useEffect(() => {
+        const storedCart = loadCart();
+        if (storedCart) {
+            setCart(storedCart)
+        }
+    }, []);
+
+    // useEffect hook for save cart (on cart)
+    useEffect(() => {
+        saveCart();
+    }, [cart])
 
     return (
         <CartContext.Provider value={{ cart }}>

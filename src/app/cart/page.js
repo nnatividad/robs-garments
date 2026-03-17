@@ -11,7 +11,7 @@ import Checkout from '@/components/Checkout/Checkout'
 
 // cart stores itemIDs
 // fetch itemDetails: name, image, price using GROQ Query
-const CART_QUERY = `*[_type=="item" && _id in $ids]{_id, name, price, "imageUrls": images[].asset->url}`;
+const CART_QUERY = `*[_type=="item" && _id in $ids && isSold == false]{_id, name, price, "imageUrls": images[].asset->url}`;
 
 export default function Cart(){
     const cartData = useCart(); // global cart context
