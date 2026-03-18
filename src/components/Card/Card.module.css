@@ -4,11 +4,14 @@
     border-radius: 10px;
     box-shadow: 5px 5px 5px hsl(0,0%,0%,0.1);
     padding: 20px;
-    margin: 10px;
+    /* Spacing should come from the grid `gap`, not per-card margins. */
+    margin: 0;
     text-align: center;
     height: 340px;
-    max-width: 300px;
-    display: inline-block;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .itemImage {
@@ -16,20 +19,26 @@
 }
 
 .cardInfo{
+    margin: 0;
+}
+
+.card > .cardInfo {
+    /* Outer cardInfo (the one that wraps the title + price). */
+    flex: 1;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .cardInfo h3{
     color: black;
+    margin: 0;
 }
 
 .cardInfo p{
     color: black;
+    margin: 0;
 }
 
-@media (max-width: 768px){
-    .card {
-        width: 300px;
-        height: auto;
-    }
-}
+/* Keep card height uniform across breakpoints. */

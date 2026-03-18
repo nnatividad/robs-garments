@@ -1,5 +1,5 @@
 'use client'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import styles from './NavBar.module.css'
 import Dropdown from '@/components/Dropdown/Dropdown'
 import Link from 'next/link'
@@ -7,7 +7,7 @@ import Link from 'next/link'
 export default function NavBar() {
     const [openDropdown, setDropDown] = useState(false);
     return (
-        <>
+        <div className={styles.navRoot}>
             <div className={styles.navbar}>
                 <ul className={styles.navLink}>
                     <span onClick={() => setDropDown((prev) => !prev)}><li>SHOP</li></span>
@@ -21,9 +21,7 @@ export default function NavBar() {
                     <Link href='/cart'><li>CART</li></Link>
                 </ul>
             </div>
-            {
-                openDropdown && <Dropdown/>
-            }
-        </>
+            {openDropdown && <Dropdown />}
+        </div>
     );
 }

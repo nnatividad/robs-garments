@@ -1,6 +1,6 @@
-.container {
+.containerOverlay {
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 20px;
     width: 200px;
     border: 1px solid black;
@@ -8,9 +8,22 @@
     background: #e1e1e1;
     padding: 10px;
     box-shadow: 5px 5px 5px 2px;
+    z-index: 1000;
 }
 
-.container ul {
+.containerInline {
+    position: static;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: #e1e1e1;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 2px;
+    margin-top: 10px;
+}
+
+.containerOverlay ul,
+.containerInline ul {
     list-style-type: none;
     font-weight: bold;
 }

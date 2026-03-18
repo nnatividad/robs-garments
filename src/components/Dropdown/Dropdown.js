@@ -3,10 +3,11 @@ import styles from './Dropdown.module.css'
 
 const categories = ['shirts-and-tops', 'sweatshirts-and-hoodies', 'jackets-and-coats', 'shorts', 'pants', 'shoes', 'accessories'];
 
-export default function Dropdown(){
+export default function Dropdown({ variant = 'overlay' }) {
+    const containerClass = variant === 'inline' ? styles.containerInline : styles.containerOverlay;
     return(
-        <main>
-            <div className={styles.container}>
+        <div>
+            <div className={containerClass}>
                 <ul>
                     <Link href="/shop"><li>All Products</li></Link>
                     <Link href={`/shop/${categories[0]}`}><li>Shirts & Tops</li></Link>
@@ -18,6 +19,6 @@ export default function Dropdown(){
                     <Link href={`/shop/${categories[6]}`}><li>Accessories</li></Link>
                 </ul>
             </div>
-        </main>
+        </div>
     );
 }

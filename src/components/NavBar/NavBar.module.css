@@ -1,3 +1,8 @@
+.navRoot {
+    position: relative;
+    padding-bottom: 10px; /* keeps old navbar spacing without relying on margin */
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -5,7 +10,7 @@
     border-style: solid;
     border-color: black;
     background: #e1e1e1;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     flex-wrap: wrap;
 }
 

@@ -41,7 +41,7 @@ export default async function ItemDetails({ params }){
                             }
                         </ul>
                     </div>
-                    <div className={styles.stickInfo}>
+                    <div className={styles.itemDetails} data-details-container="true">
                         <div className={styles.itemInfo}>
                             <h2>{item.name}</h2>
                             <h3>${item.price.toFixed(2)} USD</h3>
