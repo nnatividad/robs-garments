@@ -67,7 +67,6 @@ return (
                 cartData.cart.length > 0 ? (
                     <>
                     <div className={styles.container}>
-                        <h1>Your Cart</h1>
                         <ul>
                             {localCart.map((item) => (
                                 <li key={item._id}>
@@ -80,21 +79,22 @@ return (
                                             className={styles.itemImage}
                                         />
                                         <div className={styles.detailsContainer}>
-                                            <div className={styles.itemDetail}>
-                                                <p>{item.name}</p>
-                                                <p>${item.price.toFixed(2)}</p>
-                                            </div>
-                                            <RemoveItemButton itemID={item._id} />
+                                            <p className={styles.itemName}>{item.name}</p>
+                                            <p className={styles.itemPrice}>${item.price.toFixed(2)}</p>
+                                            <RemoveItemButton itemID={item._id} className={styles.removeButton}/>
                                         </div>
                                     </div>
                                 </li>
                             ))}
                         </ul>
-                    </div>
 
-                    <div className={styles.checkoutContainer}>
-                        Estimated Total: ${estimatedTotal.toFixed(2)}
-                        <CheckoutButton onClick={handleCart} />
+                        <div className={styles.checkoutContainer}>
+                            <h4>Order Summary</h4>
+                            <p>Total Items: {localCart.length}</p>
+                            Estimated Total: ${estimatedTotal.toFixed(2)}
+                            <CheckoutButton onClick={handleCart} />
+                        </div>
+
                     </div>
                 </>
                 ) : (
