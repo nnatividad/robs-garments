@@ -17,6 +17,7 @@ export default function NavBar() {
                     <Link href='/'><img src="/robin-garment-logo.jpg" alt="navbar-logo" width="150px"/></Link>
                 </div>
                 <ul className={styles.navLink}>
+                    <Link href='/archive'><li>ARCHIVE</li></Link>
                     <Link href='/cart'><li>CART</li></Link>
                 </ul>
             </div>

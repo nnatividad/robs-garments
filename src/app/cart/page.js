@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import RemoveItemButton from '@/components/Buttons/RemoveItemButton'
 import { useCart } from '../../app/context/CartContext'
 import { client } from '../../../sanity/client'
@@ -59,47 +60,55 @@ export default function Cart(){
         setClientSecret(clientSecret);
     }
 
-    return(
-        <main className={styles.pageFormat}>
-            <section>
+return (
+    <main className={styles.pageFormat}>
+        <section>
             {!clientSecret ? (
-                <>
-                <div className={styles.container}>
-                    <h1>Your Cart</h1>
-                    <ul>
-                        {cartData.cart.length > 0 ? localCart.map((item) => (
-                            <li key={item._id}>
-                                <div className={styles.cartItem}>
-                                    <Image
-                                        src={item.imageUrls[0]}
-                                        alt={`${item.name}`}
-                                        width = {200}
-                                        height = {200}
-                                        className={styles.itemImage}
-                                    />
-                                    <div className={styles.detailsContainer}>
-                                        <div className={styles.itemDetail}>
-                                            <p>{item.name}</p>
-                                            <p>${item.price.toFixed(2)}</p>
+                cartData.cart.length > 0 ? (
+                    <>
+                    <div className={styles.container}>
+                        <h1>Your Cart</h1>
+                        <ul>
+                            {localCart.map((item) => (
+                                <li key={item._id}>
+                                    <div className={styles.cartItem}>
+                                        <Image
+                                            src={item.imageUrls[0]}
+                                            alt={item.name}
+                                            width={200}
+                                            height={200}
+                                            className={styles.itemImage}
+                                        />
+                                        <div className={styles.detailsContainer}>
+                                            <div className={styles.itemDetail}>
+                                                <p>{item.name}</p>
+                                                <p>${item.price.toFixed(2)}</p>
+                                            </div>
+                                            <RemoveItemButton itemID={item._id} />
                                         </div>
-                                        <RemoveItemButton itemID={item._id}/>                                        
                                     </div>
-                                </div>
-                            </li>
-                        )): (
-                            `Cart empty`
-                        )}
-                    </ul>
-                </div>
-                <div className={styles.checkoutContainer}>
-                    Estimated Total: ${estimatedTotal.toFixed(2)}
-                    <CheckoutButton onClick={handleCart}/>
-                </div>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div className={styles.checkoutContainer}>
+                        Estimated Total: ${estimatedTotal.toFixed(2)}
+                        <CheckoutButton onClick={handleCart} />
+                    </div>
                 </>
+                ) : (
+                    <div className={styles.emptyCartContainer}>
+                        Cart Empty
+                        <ul>
+                            <li><Link href='/shop'>Continue Shopping</Link></li>
+                            <li><Link href='/'>Go to homepage</Link></li>
+                        </ul>
+                    </div>
+                )
             ) : (
                 <Checkout clientSecret={clientSecret} />
             )}
-            </section>
-        </main>
-    );
-}
+        </section>
+    </main>
+)};
