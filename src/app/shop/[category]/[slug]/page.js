@@ -63,24 +63,22 @@ export default async function ItemDetails({ params }){
                     </div>
                 </div>
             </section>
-            <section className={styles.spaceBetween}>
-                <div className={styles.moreItems}>
-                    <h1>You may also like </h1>
-                    <div className={styles.items}>
-                        {moreItems.slice(0, 4).map((item) => (
-                            <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
-                                <Card 
-                                    itemName={item.name}
-                                    itemImage={item.imageUrls[0]}
-                                    itemCategroy={item.category}
-                                    itemSlug={item.slug}
-                                    itemPrice={item.price}
-                                />
-                            </Link>
-                        ))}
-                    </div>
+            <div className={styles.moreItems}>
+                <h1>You may also like </h1>
+                <div className={styles.items}>
+                    {moreItems.slice(0, 4).map((item) => (
+                        <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
+                            <Card 
+                                itemName={item.name}
+                                itemImage={item.imageUrls[0]}
+                                itemCategroy={item.category}
+                                itemSlug={item.slug}
+                                itemPrice={item.price}
+                            />
+                        </Link>
+                    ))}
                 </div>
-            </section>
+            </div>
         </main>
     )
 }

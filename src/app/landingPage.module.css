@@ -39,7 +39,6 @@
 .items {
   display: grid;
   grid-template-columns: repeat(4, minmax(220px, 1fr));
-  row-gap: 20px;
   width: 100%;
   justify-items: stretch;
 }
@@ -50,11 +49,11 @@
   height: 100%;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .items {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 10px;
+        row-gap: 5px;
         justify-items: stretch;
         margin: 0 auto;
     }

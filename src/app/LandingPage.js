@@ -26,7 +26,6 @@ export default async function LandingPage () {
                 <h1>New Arrivals</h1>
                 <div className={styles.items}>
                     {items.map((item) => (
-                        <>
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                             <Card 
                                 itemName={item.name}
@@ -36,7 +35,6 @@ export default async function LandingPage () {
                                 itemPrice={item.price}
                             />
                         </Link>
-                        </>
                     ))}
                 </div>
             </div>

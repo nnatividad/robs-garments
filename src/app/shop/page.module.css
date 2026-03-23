@@ -9,8 +9,8 @@
 
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 2fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+  column-gap: 10px;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -23,10 +23,9 @@
   height: 100%;
 }
 
-@media (max-width: 768px){
+@media (max-width: 1200px){
     .items {
-        display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
         gap: 10px;
         justify-items: stretch;
     }

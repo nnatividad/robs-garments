@@ -42,7 +42,7 @@
 
 @media (max-width: 768px){
     .card {
-        height: 350px;
+        height: 300px;
         width: 100%;
     }
     .itemImage{
