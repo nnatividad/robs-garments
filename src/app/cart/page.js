@@ -64,7 +64,7 @@ return (
     <main className={styles.pageFormat}>
         <section>
             {!clientSecret ? (
-                cartData.cart.length > 0 ? (
+                localCart.length > 0 ? (
                     <>
                     <div className={styles.container}>
                         <ul>

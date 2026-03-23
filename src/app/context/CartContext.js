@@ -47,8 +47,8 @@ export default function CartProvider ( {children} ){
     // functions loadCart, saveCart for local storage
     function loadCart() {
         // loads item ids from local storage
-        const storedCart = JSON.parse(localStorage.getItem('cart'));
-        return storedCart;
+        const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+        return storedCart.filter(Boolean);
     }
 
     function saveCart() {
