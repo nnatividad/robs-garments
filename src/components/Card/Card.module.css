@@ -1,8 +1,7 @@
 .card {
     /* Spacing should come from the grid `gap`, not per-card margins. */
-    margin: 0;
     text-align: center;
-    height: 340px;
+    height: 470px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -11,13 +10,13 @@
 
 .itemImage {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: 350px;
+    height: 350px;
     border-radius: 10px;
 }
 
 .cardInfo{
-    margin: 0 ;
+    gap: 5px;
 }
 
 .card > .cardInfo {
@@ -42,6 +41,10 @@
 /* Keep card height uniform across breakpoints. */
 
 @media (max-width: 768px){
+    .card {
+        height: 350px;
+        width: 100%;
+    }
     .itemImage{
         width: 180px;
         height: 180px;

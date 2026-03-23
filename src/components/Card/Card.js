@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from './Card.module.css'
 
-export default function Card({itemName, itemImage, itemPrice}){
+export default function Card({itemID, itemName, itemImage, itemPrice}){
     return(
         <div className={styles.card}>
             <div className={styles.cardImage}>
@@ -17,9 +17,7 @@ export default function Card({itemName, itemImage, itemPrice}){
                 <h3>
                     {itemName}
                 </h3>
-                <div className={styles.cardInfo}>
-                    <p>${itemPrice.toFixed(2)} USD </p>
-                </div>
+                <p>${itemPrice.toFixed(2)} USD </p>
             </div>
         </div>
     );
