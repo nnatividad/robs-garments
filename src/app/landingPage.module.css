@@ -31,15 +31,14 @@
 
 .newArrivals h1{
   color: black;
+  margin-bottom: 15px;
 }
 
 .items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  width: 80%;
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
   justify-items: stretch;
 }
 
@@ -49,16 +48,17 @@
   height: 100%;
 }
 
-.gap {
-  gap: 40px;
-}
-
 @media (max-width: 768px){
     .items {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
         justify-items: stretch;
+        margin: 0 auto;
+    }
+
+    .newArrivals {
+      margin: 0 auto;
     }
 }
 

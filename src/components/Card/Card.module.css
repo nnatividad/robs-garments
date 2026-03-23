@@ -1,9 +1,4 @@
 .card {
-    border: 1px solid;
-    border-color: hsl(0,0%,80%);
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px hsl(0,0%,0%,0.1);
-    padding: 20px;
     /* Spacing should come from the grid `gap`, not per-card margins. */
     margin: 0;
     text-align: center;
@@ -15,11 +10,14 @@
 }
 
 .itemImage {
+    position: relative;
+    width: 220px;
+    height: 220px;
     border-radius: 10px;
 }
 
 .cardInfo{
-    margin: 0;
+    margin: 0 ;
 }
 
 .card > .cardInfo {
@@ -28,7 +26,7 @@
     margin: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .cardInfo h3{
@@ -42,3 +40,10 @@
 }
 
 /* Keep card height uniform across breakpoints. */
+
+@media (max-width: 768px){
+    .itemImage{
+        width: 180px;
+        height: 180px;
+    }
+}

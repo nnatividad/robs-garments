@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import styles from './landingPage.module.css'
-import NavBar from "@/components/NavBar/NavBar.js"
-import Footer from "@/components/Footer/Footer.js"
 import Card from '@/components/Card/Card.js'
 import { client } from '../../sanity/client'
 
@@ -23,24 +21,22 @@ export default async function LandingPage () {
                     <img src="/robin-garments.gif" alt="loading..." />
                 </Link>
             </div>
-            <section>
-                <div className={styles.newArrivals}>
-                    <h1>New Arrivals</h1>
-                    <div className={styles.items}>
-                        {items.map((item) => (
-                            <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
-                                <Card 
-                                    itemName={item.name}
-                                    itemImage={item.imageUrls[0]}
-                                    itemCategroy={item.category}
-                                    itemSlug={item.slug}
-                                    itemPrice={item.price}
-                                />
-                            </Link>
-                        ))}
-                    </div>
+            <div className={styles.newArrivals}>
+                <h1>New Arrivals</h1>
+                <div className={styles.items}>
+                    {items.map((item) => (
+                        <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
+                            <Card 
+                                itemName={item.name}
+                                itemImage={item.imageUrls[0]}
+                                itemCategroy={item.category}
+                                itemSlug={item.slug}
+                                itemPrice={item.price}
+                            />
+                        </Link>
+                    ))}
                 </div>
-            </section>
+            </div>
         </main>
     );
 }

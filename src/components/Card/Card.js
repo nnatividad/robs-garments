@@ -8,8 +8,8 @@ export default function Card({itemName, itemImage, itemPrice}){
                 <Image
                     src={itemImage}
                     alt={itemName}
-                    height={210}
-                    width={210}
+                    height={800}
+                    width={600}
                     className={styles.itemImage}
                 />
             </div>
