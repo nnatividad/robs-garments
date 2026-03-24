@@ -1,11 +1,23 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './NavBar.module.css'
 import Dropdown from '@/components/Dropdown/Dropdown'
 import Link from 'next/link'
+import { useCart } from '../../app/context/CartContext'
 
 export default function NavBar() {
     const [openDropdown, setDropDown] = useState(false);
+    const cartData = useCart();
+    const [cartLength, setCartLength] = useState(0);
+
+    useEffect(()=>{
+        if (cartData.cart == 0){
+            setCartLength(0);
+            return;
+        }
+        setCartLength(cartData.cart.length)
+    },[cartData.cart]);
+
     return (
         <div className={styles.navRoot}>
             <div className={styles.navbar}>
@@ -18,7 +30,11 @@ export default function NavBar() {
                 </div>
                 <ul className={styles.navLink}>
                     <Link href='/archive'><li>ARCHIVE</li></Link>
-                    <Link href='/cart'><li>CART</li></Link>
+                    {cartLength > 0 ? (
+                        <Link href='/cart'><li>CART - {cartLength}</li></Link>
+                    ):(
+                        <Link href='/cart'><li>CART</li></Link>
+                    )}
                 </ul>
             </div>
             {openDropdown && <Dropdown />}
