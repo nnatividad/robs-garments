@@ -38,8 +38,13 @@
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
+  .mobileNavBar {
+    border-style: solid;
+    border-color: black;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     gap: 10px;
   }
