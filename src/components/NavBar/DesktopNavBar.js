@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import styles from './NavBar.module.css'
-import Dropdown from '@/components/Dropdown/Dropdown'
+import DesktopDropdown from '@/components/Dropdown/DesktopDropDown'
 import Link from 'next/link'
 import { useCart } from '../../app/context/CartContext'
 
@@ -37,7 +37,7 @@ export default function DesktopNavBar() {
                     )}
                 </ul>
             </div>
-            {openDropdown && <Dropdown />}
+            {openDropdown && <DesktopDropdown />}
         </div>
     );
 }

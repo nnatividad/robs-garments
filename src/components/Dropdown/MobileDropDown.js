@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import styles from './Dropdown.module.css'
 
-const categories = ['shirts-and-tops', 'sweatshirts-and-hoodies', 'jackets-and-coats', 'shorts', 'pants', 'shoes', 'accessories'];
-
 export default function MobileDropdown({ variant = 'overlay' }) {
     const containerClass = variant === 'inline' ? styles.containerInline : styles.containerOverlay;
     return(
