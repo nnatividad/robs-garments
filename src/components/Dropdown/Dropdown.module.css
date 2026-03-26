@@ -31,9 +31,41 @@
     width: 100%;
 }
 
+.shopContainerOverlay {
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: #e1e1e1;
+    padding: 10px;
+    box-shadow: 5px 5px 5px 2px;
+    z-index: 1000;
+}
+
+
+.shopContainerOverlay span,
+.containerOverlay span {
+    cursor: pointer;
+}
+
+.shopContainerOverlay ul {
+    list-style-type: none;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
 @media (max-width: 768px){
     .containerOverlay {
         width: 90%;
         height: 150px;
+    }
+
+    .shopContainerOverlay {
+        width: 90%;
+        height: 350px;
     }
 }

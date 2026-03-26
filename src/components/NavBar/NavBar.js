@@ -16,11 +16,11 @@ export default function NavBar() {
 
     if (isMobile){
         return(
-            <MobileNavBar />
+            <MobileNavBar/>
         )
     }else{
         return(
-            <DesktopNavBar />
+            <DesktopNavBar/>
         )
     }
 }

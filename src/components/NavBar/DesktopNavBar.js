@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import styles from './NavBar.module.css'
 import DesktopDropdown from '@/components/Dropdown/DesktopDropDown'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useCart } from '../../app/context/CartContext'
 
 export default function DesktopNavBar() {
@@ -17,6 +18,11 @@ export default function DesktopNavBar() {
         }
         setCartLength(cartData.cart.length)
     },[cartData.cart]);
+
+    const pathName = usePathname();
+    useEffect(() => {
+        setDropDown(false);
+    },[pathName]);
 
     return (
         <div className={styles.navRoot}>
