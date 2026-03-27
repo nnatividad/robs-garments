@@ -14,7 +14,6 @@ export default function MobileDropdown({ variant = 'overlay' }) {
                     <span onClick={() => setShopDropDown((prev) => !prev)}>SHOP</span>
                     <Link href={`/about`}><li>ABOUT</li></Link>
                     <Link href={`/archive`}><li>ARCHIVE</li></Link>
-                    <Link href={`/support`}><li>SUPPORT</li></Link>
                 </ul>
             </div>
             {openShopDropdown && <ShopDropdown onClose={() => setShopDropDown(false)}/>}
