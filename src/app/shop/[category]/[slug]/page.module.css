@@ -5,8 +5,9 @@
 .basicInfo {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: flex-start;
+    gap: 10px;
 }
 
 .images {
@@ -15,10 +16,6 @@
 }
 
 .itemImage {
-    border: 1px solid;
-    border-radius: 10px;
-    border-color: hsl(0,0%,80%);
-    box-shadow: 5px 5px 5px hsl(0,0%,0%,0.1);
     width: 100%;
     height: auto;
     aspect-ratio: 3 / 4;
@@ -38,6 +35,10 @@
     align-items: center;
     gap: 20px;
     max-width: 500px;
+}
+
+.itemInfo h2, .itemInfo h3 {
+    font-family: var(--font-space-grotesk);
 }
 
 .moreItems {
@@ -60,6 +61,10 @@
   gap: 5px;
   width: 100%;
   justify-items: stretch;
+}
+
+.details {
+    font-family: var(--font-dm-sans);
 }
 
 .items > a {

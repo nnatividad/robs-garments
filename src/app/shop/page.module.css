@@ -1,6 +1,7 @@
 .pageFormat {
     display: flex;
     flex-direction: column;
+    padding-top: 70px;
 }
 
 .pageContent {
@@ -9,10 +10,10 @@
 
 .items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px,1fr));
   column-gap: 10px;
+  row-gap: 10px;
   width: 100%;
-  max-width: 1400px;
   margin: 0 auto;
   justify-items: stretch;
 }
@@ -24,8 +25,13 @@
 }
 
 @media (max-width: 1200px){
+    .pageFormat{
+        display: flex;
+        flex-direction: column;
+        padding-top: 0;
+    }
     .items {
-        grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+        grid-template-columns: repeat(auto-fit, minmax(210px,1fr));
         gap: 10px;
         justify-items: stretch;
     }

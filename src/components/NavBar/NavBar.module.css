@@ -1,15 +1,18 @@
 .navRoot {
+    font-family: var(--font-space-grotesk);
+    font-weight: 800;
     position: relative;
     padding-bottom: 10px; /* keeps old navbar spacing without relying on margin */
 }
 
 .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-style: solid;
     border-color: black;
-    background: #e1e1e1;
+    background: white;
     margin-bottom: 0;
     flex-wrap: wrap;
 }
@@ -39,6 +42,7 @@
 
 @media (max-width: 768px) {
   .mobileNavBar {
+    background: white;
     border-style: solid;
     border-color: black;
     display: flex;

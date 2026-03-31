@@ -32,7 +32,7 @@ export default function DesktopNavBar() {
                     <Link href='/about'><li>ABOUT</li></Link>
                 </ul>
                 <div className={styles.logo}>
-                    <Link href='/'><img src="/robin-garment-logo.jpg" alt="navbar-logo" width="150px"/></Link>
+                    <Link href='/'>Robin's Garments</Link>
                 </div>
                 <ul className={styles.navLink}>
                     <Link href='/archive'><li>ARCHIVE</li></Link>

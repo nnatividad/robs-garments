@@ -1,25 +1,6 @@
 .landingPage {
   background: #e1e1e1;
-}
-
-.landingGIF {
-  display: flex;
-  justify-content: center;
-  padding: 30px;
-  width: 95%;
-  margin: 0 auto;
-}
-
-.gifLink{
-  width: 100%;
-  max-width: 1000px;
-}
-
-.landingGIF img {
-  border-style: solid;
-  border-color: black;
-  width: 100%;
-  object-fit: cover; /* fills screen without stretching */
+  padding-top: 70px;
 }
 
 .newArrivals {
@@ -30,6 +11,7 @@
 }
 
 .newArrivals h1{
+  font-family: var(--font-space-grotesk);
   color: black;
   font-size: 48px;
   margin-left: 23px;
@@ -41,6 +23,7 @@
   grid-template-columns: repeat(4, minmax(220px, 1fr));
   width: 100%;
   justify-items: stretch;
+  gap: 8px;
 }
 
 .items > a {
@@ -50,6 +33,10 @@
 }
 
 @media (max-width: 1200px){
+  .landingPage {
+    padding: 0px;
+  }
+  
     .items {
         display: grid;
         grid-template-columns: 1fr 1fr;

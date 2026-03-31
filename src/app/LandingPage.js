@@ -17,13 +17,7 @@ export default async function LandingPage () {
     const items = await client.fetch(ITEMS_QUERY, {});
     return (
         <main className={styles.landingPage}>
-            <div className={styles.landingGIF}>
-                <Link href='/shop' className={styles.gifLink}>
-                    <img src="/robin-garments.gif" alt="loading..." />
-                </Link>
-            </div>
             <div className={styles.newArrivals}>
-                <h1>New Arrivals</h1>
                 <div className={styles.items}>
                     {items.map((item) => (
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
