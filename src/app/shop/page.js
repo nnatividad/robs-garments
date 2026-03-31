@@ -23,7 +23,7 @@ export default async function AllProducts(){
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                             <Card
                                 itemName={item.name}
-                                itemImage={item.imageUrls[0]}
+                                itemImages={item.imageUrls}
                                 itemCategory={item.category}
                                 itemSlug={item.slug}
                                 itemPrice={item.price}

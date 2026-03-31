@@ -70,7 +70,7 @@ export default async function ItemDetails({ params }){
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                             <Card 
                                 itemName={item.name}
-                                itemImage={item.imageUrls[0]}
+                                itemImages={item.imageUrls}
                                 itemCategroy={item.category}
                                 itemSlug={item.slug}
                                 itemPrice={item.price}

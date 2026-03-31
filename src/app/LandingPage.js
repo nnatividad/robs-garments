@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import styles from './landingPage.module.css'
 import Card from '@/components/Card/Card.js'
-import AddToCartButton from '@/components/Buttons/AddToCartButton'
 import { client } from '../../sanity/client'
 
 const ITEMS_QUERY = `*[_type=="item" && isSold == false]{
@@ -23,7 +22,7 @@ export default async function LandingPage () {
                         <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
                             <Card 
                                 itemName={item.name}
-                                itemImage={item.imageUrls[0]}
+                                itemImages={item.imageUrls}
                                 itemCategroy={item.category}
                                 itemSlug={item.slug}
                                 itemPrice={item.price}

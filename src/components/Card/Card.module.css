@@ -8,10 +8,15 @@
     overflow: hidden;
 }
 
+.cardImage {
+    position: relative;
+}
+
 .itemImage {
     position: relative;
     width: 400px;
     height: 435px;
+    transition: opacity 0.3 ease;
 }
 
 .cardInfo{
