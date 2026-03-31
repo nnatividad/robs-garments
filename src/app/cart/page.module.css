@@ -75,6 +75,14 @@
     width: 100%;
 }
 
+.detailsContainer p {
+    font-family: var(--font-dm-sans);
+}
+
+.emptyCartContainer {
+    font-family: var(--font-dm-sans);
+}
+
 @media (max-width: 768px) {
     .container {
         display: flex;

@@ -17,6 +17,10 @@
     flex-wrap: wrap;
 }
 
+.logo {
+    font-size: 18px;
+}
+
 .navLink {
     list-style-type: none;
     align-items: stretch;

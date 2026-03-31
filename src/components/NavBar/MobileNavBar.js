@@ -31,7 +31,7 @@ export default function MobileNavBar(){
                     <span onClick={() => setDropDown((prev) => !prev)}><li>MENU</li></span>
                 </ul>
                 <div className={styles.logo}>
-                    <Link href='/'>Robin's Garments</Link>
+                    <Link href='/'>Rob's Garments</Link>
                 </div>
                 <ul className={styles.navLink}>
                     {cartLength > 0 ? (

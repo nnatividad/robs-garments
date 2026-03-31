@@ -1,5 +1,5 @@
 .spaceBetween {
-    margin-bottom: 40px;
+    margin-bottom: 70px;
 }
 
 .basicInfo {
@@ -71,6 +71,10 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.itemDetails {
+    width: 30%;
 }
 
 @media (max-width: 1200px) {
