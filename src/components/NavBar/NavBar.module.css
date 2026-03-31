@@ -17,6 +17,16 @@
     flex-wrap: wrap;
 }
 
+.header  {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-space-grotesk);
+    background: black;
+    color: white;
+}
+
 .logo {
     font-size: 18px;
 }

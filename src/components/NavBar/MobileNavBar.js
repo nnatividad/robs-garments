@@ -26,6 +26,9 @@ export default function MobileNavBar(){
 
     return(
         <div className={styles.navRoot}>
+            <div className={styles.header}>
+                FREE SHIPPING ON ORDERS $50 AND OVER
+            </div>
             <div className={styles.mobileNavBar}>
                 <ul className={styles.navLink}>
                     <span onClick={() => setDropDown((prev) => !prev)}><li>MENU</li></span>
