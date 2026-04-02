@@ -46,6 +46,7 @@
 
 .navbar li {
     color: black;
+    cursor: pointer;
 }
 
 .navLink span {

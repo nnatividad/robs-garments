@@ -12,7 +12,7 @@ export default function MobileDropdown({ variant = 'overlay' }) {
             <div className={containerClass}>
                 <ul>
                     <span onClick={() => setShopDropDown((prev) => !prev)}>SHOP</span>
-                    <Link href={`/about`}><li>ABOUT</li></Link>
+                    <Link href={`/contact`}><li>CONTACT</li></Link>
                     <Link href={`/archive`}><li>ARCHIVE</li></Link>
                 </ul>
             </div>

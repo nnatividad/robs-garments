@@ -32,7 +32,7 @@ export default function DesktopNavBar() {
             <div className={styles.navbar}>
                 <ul className={styles.navLink}>
                     <span onClick={() => setDropDown((prev) => !prev)}><li>SHOP</li></span>
-                    <Link href='/about'><li>ABOUT</li></Link>
+                    <Link href='/contact'><li>CONTACT</li></Link>
                 </ul>
                 <div className={styles.logo}>
                     <Link href='/'>Rob's Garments</Link>
