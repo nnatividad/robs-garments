@@ -14,9 +14,8 @@
 
 .itemImage {
     position: relative;
-    width: 400px;
+    width: 100%;
     height: 435px;
-    transition: opacity 0.3 ease;
 }
 
 .cardInfo{
@@ -45,6 +44,13 @@
 }
 
 /* Keep card height uniform across breakpoints. */
+
+@media (min-width: 1920px){
+    .itemImage {
+        position: relative;
+        width: 100%;
+    }
+}
 
 @media (max-width: 768px){
     .card {

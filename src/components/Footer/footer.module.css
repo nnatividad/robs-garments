@@ -1,14 +1,9 @@
 .footer {
     background: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     font-size: 10px;
     color: black;
     padding: 10px;
     margin-top: 10px;
-}
-
-.footerLinks {
-    display: flex;
-    gap: 10px;
 }
