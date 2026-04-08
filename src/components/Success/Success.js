@@ -13,22 +13,20 @@ import styles from './Success.module.css'
         },[])
 */
 
-export default function Success({cart, id}){
+export default function Success({cart, id, shipping, tax}){
     useEffect(()=>{
         // clear local storage cart
         localStorage.clear();
     },[]);
 
-    const orderID = id.substring(5,12)
-    console.log(cart);
+    const orderID = '#' + id.substring(5,12);
 
     let subTotal = 0;
-    //for (let i = 0; i < cart.length; i++){
-    //    subTotal += exampleCart[i].price;
-    //}
+    for (let i = 0; i < cart.length; i++){
+        subTotal += cart[i].price;
+    }
 
-    const tax = 13.12;
-    const total = subTotal + tax;
+    const total = subTotal + tax + shipping;
 
     /*
                         {items.map((item) => (
@@ -53,7 +51,7 @@ export default function Success({cart, id}){
                 <p><Link href='/'>Return to Home Page</Link></p>
             </div>
             <div className={styles.orderSummary}>
-                <h3>Order Summary</h3>
+                <h1>Order Summary</h1>
                 <div className={styles.cartContainer}>
                     <ul>
                         {cart.map((item) => (
@@ -73,8 +71,14 @@ export default function Success({cart, id}){
                         ))}
                     </ul>
                 </div>
-                <div>
+                <div className={styles.totalContainer}>
+                    <ul>
+                        <li>Subtotal: ${subTotal.toFixed(2)}</li>
+                        <li>Shipping: ${shipping.toFixed(2)}<p></p></li>
+                        <li>Tax: ${tax.toFixed(2)}</li>
+                        <li><span>Total: ${total.toFixed(2)}</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    );
-}
+    );}
