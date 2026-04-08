@@ -13,73 +13,67 @@ import styles from './Success.module.css'
         },[])
 */
 
-export default function Success(){
+export default function Success({cart, id}){
+    useEffect(()=>{
+        // clear local storage cart
+        localStorage.clear();
+    },[]);
 
-    // example data used for template order summary
-    const orderNum = "#pi_3TJI";
-    const exampleCart = [
-        {
-            'name': 'Relaxed Linen Shirt',
-            'size': 'M',
-            'color': 'Blue',
-            'price': 68
-        },
-        {
-            'name': 'Straight Leg Jeans',
-            'size': '30x30',
-            'color': 'Olive',
-            'price': 80       
-        }
-    ];
+    const orderID = id.substring(5,12)
+    console.log(cart);
 
     let subTotal = 0;
-    for (let i = 0; i < exampleCart.length; i++){
-        subTotal += exampleCart[i].price;
-    }
+    //for (let i = 0; i < cart.length; i++){
+    //    subTotal += exampleCart[i].price;
+    //}
 
     const tax = 13.12;
     const total = subTotal + tax;
+
+    /*
+                        {items.map((item) => (
+                        <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
+                            <Card 
+                                itemName={item.name}
+                                itemImages={item.imageUrls}
+                                itemCategroy={item.category}
+                                itemSlug={item.slug}
+                                itemPrice={item.price}
+                            />
+                        </Link>
+                    ))}
+    */
 
     return(
         <div className={styles.container}>
             <div className={styles.confirmInfo}>
                 <h1> Order Confirmed! </h1>
                 <p> Thank you for your purchase! We appreciate your business and hope to see you again! </p>
-                <p> Order: <span>{orderNum} </span></p>
+                <p> Order: <span>{orderID} </span></p>
                 <p><Link href='/'>Return to Home Page</Link></p>
             </div>
             <div className={styles.orderSummary}>
                 <h3>Order Summary</h3>
                 <div className={styles.cartContainer}>
                     <ul>
-                        <li>
-                            <div className={styles.cartItem}>
-                                <img src="/robin-garments.gif" alt="loading..." className={styles.itemPhoto}/>
-                                <div className={styles.itemInfo}>
-                                    <h3>{exampleCart[0].name}</h3>
-                                    <div className={styles.itemDetail}>
-                                       <p>Size: {exampleCart[0].size}</p>
-                                        <p>Color: {exampleCart[0].color}</p>
+                        {cart.map((item) => (
+                            <li key={item._id}>
+                                <div className={styles.cartItem}>
+                                    <img src={item.imageUrls[0]} alt="loading..." className={styles.itemPhoto}/>
+                                    <div className={styles.itemInfo}>
+                                        <h3>{item.name}</h3>
+                                        <div className={styles.itemDetail}>
+                                            <p>Size: {item.size}</p>
+                                            <p>Color: {item.color}</p>
+                                        </div>
                                     </div>
+                                    <span className={styles.price}>${item.price.toFixed(2)}</span>
                                 </div>
-                                <span className={styles.price}>${exampleCart[0].price.toFixed(2)}</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div className={styles.cartItem}>
-                                <img src="/robin-garments.gif" alt="loading..." className={styles.itemPhoto}/>
-                                <div className={styles.itemInfo}>
-                                    <h3>{exampleCart[1].name}</h3>
-                                    <div className={styles.itemDetail}>
-                                       <p>Size: {exampleCart[1].size}</p>
-                                        <p>Color: {exampleCart[1].color}</p>
-                                    </div>
-                                </div>
-                                <span className={styles.price}>${exampleCart[1].price.toFixed(2)}</span>
-                            </div>
-                        </li>
+                            </li>
+                        ))}
                     </ul>
                 </div>
+                <div>
             </div>
         </div>
     );
