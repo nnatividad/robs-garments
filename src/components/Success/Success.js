@@ -3,21 +3,13 @@ import React, {useEffect} from 'react'
 import Link from 'next/link'
 import styles from './Success.module.css'
 
-/* 
-            <div className={styles.landingGIF}>
-            </div>
-
-        useEffect(()=>{
-        // clear local storage cart
-        localStorage.clear();
-        },[])
-*/
-
-export default function Success({cart, id, shipping, tax}){
+export default function Success({cart, id, shipping, tax, paymentInfo}){
     useEffect(()=>{
         // clear local storage cart
         localStorage.clear();
     },[]);
+
+    console.log(paymentInfo);
 
     const orderID = '#' + id.substring(5,12);
 
@@ -28,20 +20,6 @@ export default function Success({cart, id, shipping, tax}){
 
     const total = subTotal + tax + shipping;
 
-    /*
-                        {items.map((item) => (
-                        <Link href={`/shop/${item.category}/${item.slug?.current}`} key={item._id}>
-                            <Card 
-                                itemName={item.name}
-                                itemImages={item.imageUrls}
-                                itemCategroy={item.category}
-                                itemSlug={item.slug}
-                                itemPrice={item.price}
-                            />
-                        </Link>
-                    ))}
-    */
-
     return(
         <div className={styles.container}>
             <div className={styles.confirmInfo}>
@@ -51,15 +29,15 @@ export default function Success({cart, id, shipping, tax}){
                 <p><Link href='/'>Return to Home Page</Link></p>
             </div>
             <div className={styles.orderSummary}>
-                <h1>Order Summary</h1>
+                <h2>Order Summary</h2>
                 <div className={styles.cartContainer}>
                     <ul>
                         {cart.map((item) => (
-                            <li key={item._id}>
+                            <li key={item._id} className={styles.item}>
                                 <div className={styles.cartItem}>
                                     <img src={item.imageUrls[0]} alt="loading..." className={styles.itemPhoto}/>
                                     <div className={styles.itemInfo}>
-                                        <h3>{item.name}</h3>
+                                        <h4>{item.name}</h4>
                                         <div className={styles.itemDetail}>
                                             <p>Size: {item.size}</p>
                                             <p>Color: {item.color}</p>
@@ -78,6 +56,21 @@ export default function Success({cart, id, shipping, tax}){
                         <li>Tax: ${tax.toFixed(2)}</li>
                         <li><span>Total: ${total.toFixed(2)}</span></li>
                     </ul>
+                </div>
+            </div>
+            <div className={styles.orderSummary}>
+                <h2>Delivery Details</h2>
+                <div className={styles.deliveryDetails}>
+                    <div>
+                        <h4>Ship to</h4>
+                        
+                    </div>
+                    <div><h4>Shipping Method</h4></div>
+                    <div>
+                        <h4>Payment</h4>
+                        <p>{paymentInfo.brand} ending in {paymentInfo.last4}</p>
+                    </div>
+                    <div><h4>Date Placed</h4></div>
                 </div>
             </div>
         </div>

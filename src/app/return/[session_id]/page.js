@@ -6,22 +6,39 @@ const LINE_ITEMS_QUERY = `*[_type=="item" && _id in $ids]{_id, name, price, colo
 
 export default async function Return({params}){
     const {session_id} = await(params);
-    const session = await stripe.checkout.sessions.retrieve(session_id);
+    const session = await stripe.checkout.sessions.retrieve(
+        session_id,
+        {
+            expand: ['payment_intent.payment_method']
+        }
+    );
 
     if (session?.status == 'open') {
         return <p>Payment did not work</p>;
     }
 
     if (session?.status == 'complete'){
-        // extract taxes and shipping information from session
+        // taxes and shipping information from session
         const shippingCost = session.total_details.amount_shipping / 100;
         const tax = session.total_details.amount_tax / 100;
+
+        // shipping and buyer information from session
+        let paymentInfo;
+        if (session.payment_intent && session.payment_intent.payment_method) {
+        const card = session.payment_intent.payment_method.card;
+
+        paymentInfo = {
+            'brand': card.brand,
+            'last4': card.last4
+        };
+
+        }
 
         // fetch lineItems from checkout session
         const lineItems = await stripe.checkout.sessions.listLineItems(session_id, {expand:['data.price.product']});
         const ids = lineItems.data.map(item => item.price.product.metadata.sanityId);
         const lineItemDetails = await client.fetch(LINE_ITEMS_QUERY, {ids: ids});
         
-        return <Success cart={lineItemDetails} id={session_id} shipping={shippingCost} tax={tax}/>
+        return <Success cart={lineItemDetails} id={session_id} shipping={shippingCost} tax={tax} paymentInfo={paymentInfo}/>
     }
 }
