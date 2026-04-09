@@ -3,13 +3,11 @@ import React, {useEffect} from 'react'
 import Link from 'next/link'
 import styles from './Success.module.css'
 
-export default function Success({cart, id, shipping, tax, paymentInfo}){
+export default function Success({cart, id, shipping, tax, paymentInfo, deliveryInfo, date}){
     useEffect(()=>{
         // clear local storage cart
         localStorage.clear();
     },[]);
-
-    console.log(paymentInfo);
 
     const orderID = '#' + id.substring(5,12);
 
@@ -63,14 +61,22 @@ export default function Success({cart, id, shipping, tax, paymentInfo}){
                 <div className={styles.deliveryDetails}>
                     <div>
                         <h4>Ship to</h4>
-                        
+                        <p>{deliveryInfo.name}</p>
+                        <p>{deliveryInfo.line1}</p>
+                        <p>{deliveryInfo.city} {deliveryInfo.postal_code}</p>
                     </div>
-                    <div><h4>Shipping Method</h4></div>
+                    <div>
+                        <h4>Shipping Method</h4>
+                        <p>{deliveryInfo.shipping_method}</p>
+                    </div>
                     <div>
                         <h4>Payment</h4>
                         <p>{paymentInfo.brand} ending in {paymentInfo.last4}</p>
                     </div>
-                    <div><h4>Date Placed</h4></div>
+                    <div>
+                        <h4>Date Placed</h4>
+                        <p>{date}</p>
+                    </div>
                 </div>
             </div>
         </div>
