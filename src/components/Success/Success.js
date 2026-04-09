@@ -24,7 +24,6 @@ export default function Success({cart, id, shipping, tax, paymentInfo, deliveryI
                 <h1> Order Confirmed! </h1>
                 <p> Thank you for your purchase! We appreciate your business and hope to see you again! </p>
                 <p> Order: <span>{orderID} </span></p>
-                <p><Link href='/'>Return to Home Page</Link></p>
             </div>
             <div className={styles.orderSummary}>
                 <h2>Order Summary</h2>
@@ -75,9 +74,16 @@ export default function Success({cart, id, shipping, tax, paymentInfo, deliveryI
                     </div>
                     <div>
                         <h4>Date Placed</h4>
-                        <p>{date}</p>
+                        <p>{deliveryInfo.date}</p>
                     </div>
                 </div>
+            </div>
+            <div className={styles.bottomMessage}>
+                <b><Link href='/'>Continue Shopping</Link></b>
+                <p>
+                    Questions? Reach out via Instagram DM @robinsgarments with your order number.
+                    Orders are final sale unless you received the wrong or damaged item. <u><Link href='/contact'>Return policy</Link></u>
+                </p>
             </div>
         </div>
     );}

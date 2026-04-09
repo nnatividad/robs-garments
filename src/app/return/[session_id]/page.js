@@ -50,19 +50,34 @@ export default async function Return({params}){
         // deliveryInfo object including shipping method
         const name = session.customer_details.name;
         const address = session.customer_details.address;
-        const deliveryInfo = {
-            'name': name,
-            'line1': address.line1,
-            'city': address.city,
-            'postal_code': address.postal_code,
-            'shipping_method': displayName
+
+        // timestamp of purchase made
+        const sessionDate = new Date(session.created * 1000); // multiply by 1000 to convert seconds to milliseconds
+
+        const options = {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
         };
+
+        // convert to month day, year format
+        const formattedDate = sessionDate.toLocaleDateString('en-US', options);
 
         // fetch lineItems from checkout session
         const lineItems = await stripe.checkout.sessions.listLineItems(session_id, {expand:['data.price.product']});
         const ids = lineItems.data.map(item => item.price.product.metadata.sanityId);
         const lineItemDetails = await client.fetch(LINE_ITEMS_QUERY, {ids: ids});
         
+
+        const deliveryInfo = {
+            'name': name,
+            'line1': address.line1,
+            'city': address.city,
+            'postal_code': address.postal_code,
+            'shipping_method': displayName,
+            'date': formattedDate
+        };
+
         return <Success cart={lineItemDetails} id={session_id} shipping={shippingCost} tax={tax} paymentInfo={paymentInfo} deliveryInfo={deliveryInfo}/>
     }
 }
