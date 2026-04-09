@@ -27,7 +27,7 @@ export default function MobileNavBar(){
     return(
         <div className={styles.navRoot}>
             <div className={styles.header}>
-                FREE SHIPPING ON ORDERS $50 AND OVER
+                <marquee behaviour="slide" direction="left">WELCOME TO THE SHOP ** FREE SHIPPING ON ORDERS $50 AND OVER ** MORE TO COME</marquee>
             </div>
             <div className={styles.mobileNavBar}>
                 <ul className={styles.navLink}>
