@@ -127,3 +127,28 @@
     gap: 8px;
     margin-top: 8px;
 }
+
+@media (max-width: 768px){
+    .confirmInfo p {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .orderSummary {
+        width: 80%;
+        margin-bottom: 5px;
+    }
+
+    .deliveryDetails {
+        gap: 5px;
+    }
+
+    .bottomMessage {
+        width: 70%;
+        height: auto;
+        text-align: center;
+    }
+}

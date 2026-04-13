@@ -22,7 +22,8 @@ export default function Success({cart, id, shipping, tax, paymentInfo, deliveryI
         <div className={styles.container}>
             <div className={styles.confirmInfo}>
                 <h1> Order Confirmed! </h1>
-                <p> Thank you for your purchase! We appreciate your business and hope to see you again! </p>
+                <p> Thank you for your purchase! </p>
+                <p>We appreciate your business and hope to see you again! </p>
                 <p> Order: <span>{orderID} </span></p>
             </div>
             <div className={styles.orderSummary}>
