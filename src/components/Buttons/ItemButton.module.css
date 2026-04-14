@@ -2,12 +2,14 @@
     border: 1px solid black;
     color: black;
     border-radius: 10px;
-    width: 100px;
-    height: 30px;
+    width: 120px;
+    height: 50px;
+    padding: 8px;
     background-color: #e1e1e1;
     font-size: 15px;
     transition-duration: 0.4s;
     cursor: pointer;
+    font-family: var(--font-courier-prime);
 }
 
 .addButton {
@@ -20,18 +22,21 @@
     font-size: 15px;
     transition-duration: 0.4s;
     cursor: pointer;
+    font-family: var(--font-courier-prime);
 }
 
 .checkoutButton {
     border: 1px solid black;
     color: black;
     border-radius: 10px;
-    width: 40%;
+    width: 50%;
     height: 50px;
     background-color: #e1e1e1;
     font-size: 15px;
     transition-duration: 0.4s;
     cursor: pointer;
+    font-family: var(--font-courier-prime);
+
 }
 
 button:hover {

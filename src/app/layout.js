@@ -1,18 +1,20 @@
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { Courier_Prime, PT_Sans } from "next/font/google";
 import CartProvider from './context/CartContext';
 import NavBar from '@/components/NavBar/NavBar';
 import Footer from '@/components/Footer/Footer';
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({ 
+const courierPrime = Courier_Prime({
+  weight: ['400', '700'],
   subsets: ['latin'],
-  variable: '--font-space-grotesk'
- });
+  variable: '--font-courier-prime',
+})
 
-const dmSans = DM_Sans({ 
-  subsets:['latin'],
-  variable: '--font-dm-sans'
-});
+const ptSans = PT_Sans({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-pt-sans',
+})
 
 export const metadata = {
   title: "Create Next App",
@@ -22,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+      <body className={`${courierPrime.variable} ${ptSans.variable}`}>
         <CartProvider>
           <NavBar/>
           <main>

@@ -1,5 +1,5 @@
 .navRoot {
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-courier-prime);
     font-weight: 800;
     position: relative;
     padding-bottom: 10px; /* keeps old navbar spacing without relying on margin */
@@ -25,7 +25,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-courier-prime);
     background: black;
     color: white;
 }
@@ -54,11 +54,11 @@
 }
 
 .logo {
-    width: 150px;
+    width: 180px;
     height: auto;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 400px) {
   .mobileNavBar {
     background: white;
     border-style: solid;

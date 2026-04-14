@@ -30,6 +30,7 @@
     gap: 10px;
     padding: 10px;
     margin: 10px;
+    font-family: var(--font-courier-prime);
 }
 
 .emptyCartContainer{
@@ -73,14 +74,15 @@
     justify-contenet: center;
     gap: 20px;
     width: 100%;
+    text-align: center;
 }
 
 .detailsContainer p {
-    font-family: var(--font-dm-sans);
+    font-family: var(--font-pt-sans);
 }
 
 .emptyCartContainer {
-    font-family: var(--font-dm-sans);
+    font-family: var(--font-pt-sans);
 }
 
 @media (max-width: 768px) {

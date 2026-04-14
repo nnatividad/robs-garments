@@ -5,11 +5,11 @@
 }
 
 .pageFormat h1, .pageFormat h2 {
-    font-family: var(--font-space-grotesk);
+    font-family: var(--font-courier-prime);
 }
 
 .pageFormat p {
-    font-family: var(--font-dm-sans);
+    font-family: var(--font-pt-sans);
     font-size: 24px;
     text-align: center;
 }
