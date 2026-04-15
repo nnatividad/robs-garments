@@ -117,8 +117,8 @@
     }
 
     .items {
-        display: grid
-        margin-left: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 5px;
         justify-items: stretch;
     }
