@@ -14,8 +14,6 @@ import Checkout from '@/components/Checkout/Checkout'
 // fetch itemDetails: name, image, price using GROQ Query
 const CART_QUERY = `*[_type=="item" && _id in $ids && isSold == false]{_id, name, price, "imageUrls": images[].asset->url}`;
 
-export const revalidate = 0;
-
 export default function Cart(){
     const cartData = useCart(); // global cart context
     const [localCart, setLocalCart] = useState([]); // local cart storing item data
