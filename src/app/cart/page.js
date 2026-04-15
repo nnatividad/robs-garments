@@ -14,6 +14,8 @@ import Checkout from '@/components/Checkout/Checkout'
 // fetch itemDetails: name, image, price using GROQ Query
 const CART_QUERY = `*[_type=="item" && _id in $ids && isSold == false]{_id, name, price, "imageUrls": images[].asset->url}`;
 
+export const revalidate = 0;
+
 export default function Cart(){
     const cartData = useCart(); // global cart context
     const [localCart, setLocalCart] = useState([]); // local cart storing item data
@@ -30,7 +32,7 @@ export default function Cart(){
         
         // query cart items by id whenever the cart array is updated
         async function fetchItems(){
-            const cartItems = await client.fetch(CART_QUERY, {ids: cartData.cart}); // fetching cartItems
+            const cartItems = await client.fetch(CART_QUERY, {ids: cartData.cart}, { cache: "no-store" }); // fetching cartItems
 
             // calculating cart total whenever cart changes
             let total = 0;

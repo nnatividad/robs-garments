@@ -14,12 +14,14 @@ const ITEMS_QUERY = `*[_type=="item" && isSold == false]{
     slug
     }`;
 
+export const revalidate = 0;
+
 export default async function ItemDetails({ params }){
     const { slug } = await(params)
     const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]{..., "imageUrls": images[].asset->url}`;
 
-    const item = await client.fetch(ITEM_QUERY, { slug });
-    const moreItems = await client.fetch(ITEMS_QUERY, {});
+    const item = await client.fetch(ITEM_QUERY, { slug }, { cache: "no-store" });
+    const moreItems = await client.fetch(ITEMS_QUERY, {}, { cache: "no-store" });
 
     return(
         <main>

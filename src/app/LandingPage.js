@@ -11,9 +11,11 @@ const ITEMS_QUERY = `*[_type=="item" && isSold == false]{
   "imageUrls": images[].asset->url,
   slug
 }`;
-  
+
+export const revalidate = 0;
+
 export default async function LandingPage () {
-    const items = await client.fetch(ITEMS_QUERY, {});
+    const items = await client.fetch(ITEMS_QUERY, {}, { cache: "no-store" });
     return (
         <main className={styles.landingPage}>
             <div className={styles.newArrivals}>

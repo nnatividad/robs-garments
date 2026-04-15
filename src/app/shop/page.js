@@ -12,8 +12,10 @@ import { client } from '../../../sanity/client'
     slug
     }`;
 
+export const revalidate = 0;
+
 export default async function AllProducts(){
-    const items = await client.fetch(ITEMS_QUERY, {});
+    const items = await client.fetch(ITEMS_QUERY, {},{ cache: "no-store" });
 
     return(
         <main className={styles.pageFormat}>

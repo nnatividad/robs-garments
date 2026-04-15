@@ -5,10 +5,12 @@ import { stripe } from '../../../../lib/stripe'
 
 const ITEMS_QUERY = `*[_type=="item" && _id in $ids]{_id, name, price, "imageUrls": images[].asset->url, isSold}`;
 
+export const revalidate = 0;
+
 export async function POST(req){
     const origin = (await headers()).get('origin')
     const body = await req.json(); // receives array of productIDs
-    const cart = await client.fetch(ITEMS_QUERY, {ids:body}); // queries product data: name, price, images
+    const cart = await client.fetch(ITEMS_QUERY, {ids:body}, { cache: "no-store" }); // queries product data: name, price, images
 
     // check if items are sold or not
     for(let i = 0; i < cart.length; i++){

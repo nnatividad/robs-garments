@@ -3,10 +3,12 @@ import Link from 'next/link'
 import styles from '@/app/shop/page.module.css'
 import { client } from '../../../../sanity/client'
 
+export const revalidate = 0;
+
 export default async function Shop({params}){
     const {category} = await params;
     const ITEMS_BY_CATEGORY_QUERY = `*[_type == "item" && category == "${category}" && isSold == false]{..., "imageUrls": images[].asset->url}`
-    const items = await client.fetch(ITEMS_BY_CATEGORY_QUERY, {});
+    const items = await client.fetch(ITEMS_BY_CATEGORY_QUERY, {},{ cache: "no-store" });
 
     return(
         <main className={styles.pageFormat}>
