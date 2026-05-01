@@ -19,9 +19,17 @@ export const revalidate = 0;
 export default async function ItemDetails({ params }){
     const { slug } = await(params)
     const ITEM_QUERY = `*[_type=="item" && slug.current== $slug][0]{..., "imageUrls": images[].asset->url}`;
+    const MORE_ITEMS_QUERY = `*[_type=="item" && isSold == false && slug.current != $slug]{
+    _id,
+    category,
+    price,
+    name,
+    "imageUrls": images[].asset->url,
+    slug
+    }`;
 
     const item = await client.fetch(ITEM_QUERY, { slug }, { cache: "no-store" });
-    const moreItems = await client.fetch(ITEMS_QUERY, {}, { cache: "no-store" });
+    const moreItems = await client.fetch(MORE_ITEMS_QUERY, { slug }, { cache: "no-store" });
 
     return(
         <main>

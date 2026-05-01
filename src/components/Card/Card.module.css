@@ -36,6 +36,7 @@
     font-family: var(--font-courier-prime);
     color: black;
     margin: 0;
+    font-size: 15px;
 }
 
 .cardInfo p{
