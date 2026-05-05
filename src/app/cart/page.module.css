@@ -85,6 +85,16 @@
     font-family: var(--font-pt-sans);
 }
 
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    font-family: var(--font-pt-sans);
+    font-size: 1.2rem;
+    color: black;
+}
+
 @media (max-width: 768px) {
     .container {
         display: flex;
@@ -95,4 +105,5 @@
     .checkoutContainer {
         width: 100%;
     }
+
 }

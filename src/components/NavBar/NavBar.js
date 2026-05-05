@@ -11,6 +11,9 @@ export default function NavBar() {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768)
         }
+
+        handleResize(); // immediately call handle resize when navbar mounts to check initial screen width
+
         window.addEventListener("resize", handleResize);
     },[])
 

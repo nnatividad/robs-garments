@@ -19,12 +19,14 @@ export default function Cart(){
     const [localCart, setLocalCart] = useState([]); // local cart storing item data
     const [estimatedTotal, setEstimatedTotal] = useState(0); // cart total state
     const [clientSecret, setClientSecret] = useState(null); // stores client secret in state used for rendering embedded checkout
+    const [isLoading, setIsLoading] = useState(true); // loading state for cart items
     
     useEffect(() => {
 
         if (cartData.cart.length == 0){
             setLocalCart([]);
             setEstimatedTotal(0);
+            setIsLoading(false);
             return;
         }
         
@@ -40,6 +42,7 @@ export default function Cart(){
 
             setEstimatedTotal(total);
             setLocalCart(cartItems);
+            setIsLoading(false);
         }
 
         fetchItems();
@@ -63,7 +66,11 @@ export default function Cart(){
 return (
     <main className={styles.pageFormat}>
         <section>
-            {!clientSecret ? (
+            {isLoading ? (
+                <div className={styles.loadingContainer}>
+                    Loading cart...
+                </div>
+            ) : !clientSecret ? (
                 localCart.length > 0 ? (
                     <>
                     <div className={styles.container}>
