@@ -40,8 +40,6 @@ export default function CartProvider ( {children} ){
             let newCart = prevCart.filter(id => id !== itemId);
             return newCart;
         });
-
-        alert("Item removed from cart!")
     };
 
     // functions loadCart, saveCart for local storage

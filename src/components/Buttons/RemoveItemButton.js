@@ -10,7 +10,6 @@ export default function RemoveFromCart( {itemID} ){
             className={styles.removeButton}
             onClick={() => {
                 removeFromCart.removeItem(itemID);
-                alert("Item removed Cart");
             }}
         >
             Remove Item

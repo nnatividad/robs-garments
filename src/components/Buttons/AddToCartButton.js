@@ -10,10 +10,9 @@ export default function AddToCart( {itemID} ){
             className={styles.addButton}
             onClick={() => {
                 addToCart.addItem(itemID);
-                alert("Item added to Cart");
             }}
         >
-            Add To Cart
+            Add to Cart
         </button>
     )
 }
